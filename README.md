@@ -12,24 +12,20 @@
 ## Requirements  
 #### Configuration  
 ##### backend/
-* copy your lab-14 or comprable api into into a backend directory
+* Copy your mid-project into this directory
+  * Remove the .git folder from the backend project directory before commiting
+  
 ##### frontend/
 * **README.md** -- with a documention about your lab
 * **.babelrc** -- with all dependencies and dev-dependencies 
 * **.eslintrc** -- with the class .eslintrc file
 * **.gitignore** -- with a robust gitignore
 * **.eslintignore** -- with the class .eslintignore
-* **yarn.lock** -- with the yarn lockfile
 * **package.json** -- with all dependencies and dev-dependencies 
 * **webpack.config.js** -- with webpack config
 * **src/** -- containing the front end code
 * **src/main.js** -- renders the app
 * **src/style** -- containing your sass
-* **src/style/main.scss** -- for importing and including reset and base
-* **src/style/_vars.scss** -- sass variables
-* **src/style/_reset.scss** -- sass reset 
-* **src/style/_base.scss** -- base styles 
-* **src/style/_layout.scss** -- layout styles 
  
 #### Feature Tasks 
 * Create a frontend for your midproject backend
