@@ -4,6 +4,8 @@
   "description": "401 JS --  Lab 36 Full Stack Crud ===",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "watch": "webpack-dev-server --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
