@@ -9,13 +9,12 @@
   * Submit a link to your pull request on canvas
   * Submit a question, observation, and how long you spent on canvas  
 
-## Requirements  
-#### Configuration  
-##### backend/
+## Configuration  
+#### backend/
 * Copy your mid-project into this directory
   * Remove the .git folder from the backend project directory before commiting
   
-##### frontend/
+#### frontend/
 * **README.md** -- with a documention about your lab
 * **.babelrc** -- with all dependencies and dev-dependencies 
 * **.eslintrc** -- with the class .eslintrc file
@@ -27,14 +26,14 @@
 * **src/main.js** -- renders the app
 * **src/style** -- containing your sass
  
-#### Feature Tasks 
+## Feature Tasks 
 * Create a frontend for your midproject backend
 * Use react/redux best practices
 * Add reporter and thunk middleware to your redux store
 * make async action creators for making ajax request to your backend
 * make sync action creators from updating your app store
 
-### Components
+#### Components
 ```
 Provider
   App
@@ -50,5 +49,5 @@ Provider
   * If the user is not logged in they should be forced to remain on the landing route(s)
   * If the user is logged in they should not permitted to remain on the landing route(s)
 
-####  Documentation  
+##  Documentation  
 Write a description of the project in your README.md
