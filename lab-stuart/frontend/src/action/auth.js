@@ -15,7 +15,7 @@ export const signup = (user) => (store) => {
     .withCredentials()
     .then(res => {
       console.log({res});
-      return store.dispatch(tokenSet(res.body.json));
+      return store.dispatch(tokenSet(res.body.token));
     });
 };
 
@@ -25,6 +25,6 @@ export const login = (user) => (store) => {
     .withCredentials()
     .then(res => {
       console.log({res});
-      return store.dispatch(tokenSet(res.body.json));
+      return store.dispatch(tokenSet(res.body.token));
     });
 };

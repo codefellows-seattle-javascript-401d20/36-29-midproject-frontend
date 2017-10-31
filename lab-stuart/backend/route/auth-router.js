@@ -12,6 +12,7 @@ authRouter.post('/auth', (req, res, next) => {
     .then(account => account.tokenCreate())
     .then(token => {
       res.cookie('X-Charity-Token', token, {maxAge: 604800000});
+      console.log(res);
       res.json({token});
     })
     .catch(next);
@@ -21,6 +22,7 @@ authRouter.get('/auth', basicAuth, (req, res, next) => {
   req.account.tokenCreate()
     .then(token => {
       res.cookie('X-Charity-Token', token, {maxAge: 604800000});
+      console.log(res);
       res.json({token});
     })
     .catch(next);
