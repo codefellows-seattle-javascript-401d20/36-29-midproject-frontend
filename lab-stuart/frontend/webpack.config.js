@@ -23,8 +23,8 @@ if(production){
   plugins = plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
-  ])
-};
+  ]);
+}
 
 module.exports = {
   plugins,
@@ -46,7 +46,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: 'image/[name].[hash].[ext]'
+            name: 'image/[name].[hash].[ext]',
           },
         }],
       },
@@ -66,11 +66,11 @@ module.exports = {
               options: {
                 sourceMap: production ? false : true,
                 includePaths: [`${__dirname}/src/style`],
-              }
+              },
             },
           ],
-        })
-      }
+        }),
+      },
     ],
   },
 };
