@@ -22,7 +22,7 @@ const production = process.env.NODE_ENV === 'production';
 
 // Register middleware
 app.use(jsonParser);
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+app.use(cors({ origin: 'http://localhost:8080', optionsSuccessStatus: 200 }));
 app.use(morgan(production ? 'combined' : 'dev'));
 
 // Register routes
@@ -45,6 +45,7 @@ module.exports = {
         return reject(new Error('__SERVER_ERROR__ server is already on'));
       server = app.listen(process.env.PORT, () => {
         console.log('__SERVER_ON__', process.env.PORT);
+        console.log('CORS', process.env.CORS_ORIGIN);
         return resolve();
       });
     })
