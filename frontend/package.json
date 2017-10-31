@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "401 JS --  Lab 36 Full Stack Crud ===",
   "main": "index.js",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(svg|eof|ttf|woff|woff2|scss|gif)$": "<rootDir>/src/__test__/mock-asset.js"
+    }
+  },
   "scripts": {
     "build": "webpack",
     "watch": "webpack-dev-server --inline --hot",
@@ -35,7 +40,11 @@
     "superagent": "^3.8.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "url-loader": "^0.6.2",
+    "validator": "^9.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }
