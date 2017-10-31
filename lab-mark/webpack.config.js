@@ -1,26 +1,55 @@
 'use strict'
 
+require('dotenv').config()
+
+const {DefinePlugin, EnvironmentPlugin} = require('webpack')
+const CleanPlugin = require('clean-webpack-plugin')
+const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const ExtractPlugin = require('extract-text-webpack-plugin')
 
+const production = process.env.NODE_ENV === 'production'
+
+let plugins = [
+  new HTMLPlugin({title: 'kanban'}),
+  new EnvironmentPlugin(['NODE_ENV']),
+  new ExtractPlugin('bundle.[hash].css'),
+  new DefinePlugin({
+    __API_URL__: JSON.stringify(process.env.API_URL),
+  }),
+]
+
+if(production){
+  plugins = plugins.concat([
+    new UglifyPlugin(),
+    new CleanPlugin(),
+  ])
+}
+
 module.exports = {
-  entry: `${__dirname}/src/main.js`,
-  devtool: 'cheap-eval-source-map',
+  plugins,
+  devtool: production ? undefined : 'source-map',
+  entry: `${__dirname}/frontend/src/main.js`,
   devServer: {
     historyApiFallback: true,
   },
-  output:  {
-    path: `${__dirname}/build`,
+  output: {
     filename: 'bundle.[hash].js',
+    path: `${__dirname}/build`,
+    publicPath: process.env.CDN_URL,
   },
-  plugins: [
-    new HTMLPlugin({
-      title: '',
-    }),
-    new ExtractPlugin('bundle.[hash].css'),
-  ],
   module: {
     rules: [
+      {
+        test: /\.(jpg|gif|png)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: 'image/[name].[hash].[ext]',
+          },
+        }],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -35,13 +64,14 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true,
+                sourceMap: production ? false : true,
                 includePaths: [`${__dirname}/src/style`],
               },
             },
           ],
         }),
       },
+
     ],
   },
 }
