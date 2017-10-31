@@ -29,6 +29,8 @@ accountSchema.methods.tokenCreate = function() {
   return this.save()
     .then(account => {
       let options = {expiresIn: '7d'};
+      console.log('account.tokenSeed: ', account.tokenSeed);
+      console.log('process.env.CLOUD_SECRET: ', process.env.CLOUD_SECRET);
       return jwt.sign({tokenSeed: account.tokenSeed}, process.env.CLOUD_SECRET, options);
     });
 };

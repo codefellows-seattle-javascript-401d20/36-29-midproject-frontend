@@ -20,7 +20,7 @@ const production = process.env.NODE_ENV === 'production';
 
 // Register middleware
 app.use(jsonParser);
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials:true }));
 app.use(morgan(production ? 'combined' : 'dev'));
 
 // Register routes

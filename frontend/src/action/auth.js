@@ -14,7 +14,8 @@ export const signup = (user) => (store) => {
   .send(user)
   .withCredentials()
   .then(res => {
-    console.log({res});
+    console.log('test');
+    console.log('res: ', {res});
     return store.dispatch(tokenSet(res.body.token));
   });
 };
@@ -22,5 +23,10 @@ export const signup = (user) => (store) => {
 export const login = (user) => (store) => {
   return superagent.get(`${__API_URL__}/auth`)
   .auth(user.username, user.password)
-  .withCredentials();
+  .withCredentials()
+  .then(res => {
+    console.log('test');
+    console.log('res: ', {res});
+    return store.dispatch(tokenSet(res.body.token));
+  });
 };
