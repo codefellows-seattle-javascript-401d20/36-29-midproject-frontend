@@ -10,21 +10,17 @@ export const tokenRemove = () => ({
 });
 
 export const signup = (user) => (store) => {
-  return superagent.post(`${__API_URL__}/signup`)
+  return superagent.post(`${__API_URL__}/auth`)
   .send(user)
   .withCredentials()
   .then(res => {
     console.log({res});
-    return store.dispatch(tokenSet(res.text));
+    return store.dispatch(tokenSet(res.body.token));
   });
 };
 
 export const login = (user) => (store) => {
-  return superagent.get(`${__API_URL__}/login`)
+  return superagent.get(`${__API_URL__}/auth`)
   .auth(user.username, user.password)
-  .withCredentials()
-  .then(res => {
-    console.log({res});
-    return store.dispatch(tokenSet(res.text));
-  });
+  .withCredentials();
 };
