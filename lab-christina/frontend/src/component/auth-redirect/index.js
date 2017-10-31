@@ -5,7 +5,7 @@ import * as util from '../../lib/util.js'
 
 class AuthRedirect extends React.Component {
   render(){
-    let { location, history, token } this.props
+    let { location, history, token } = this.props
     let { pathname } = location
     let to = null
 

@@ -19,7 +19,7 @@ export const signup = (store) => {
   })
 }
 
-export const longin  = (user) => (store) {
+export const login  = (user) => (store) => {
   return superagent.get(`${__API_URL__}/auth`)
   .auth(user.username, user.password)
   .withCredentials()

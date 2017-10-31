@@ -1,4 +1,4 @@
-import * as util from '../lib/util,js'
+import * as util from '../lib/util.js'
 
 let token = util.cookieFetch('charity-choice-token')
 let initialState = token ? token : null

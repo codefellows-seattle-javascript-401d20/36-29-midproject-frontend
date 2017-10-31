@@ -1,6 +1,6 @@
 import React from 'react'
-import { link } from 'react-router-dom'
-import { connect } from 'react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import AuthForm from '../auth-form'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
