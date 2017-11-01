@@ -10,11 +10,20 @@ import AuthRedirect from '../auth-redirect'
 import * as clientProfile from '../../action/client-profile.js'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.getProfile = this.getProfile.bind(this)
+  }
+
+  getProfile() {
+    this.props.fetchClientProfile()
+      .catch(console.error)
+  }
 
   componentDidMount(){
     if(this.props.loggedIn){
-      this.props.fetchClientProfile()
-        .catch(console.error)
+      this.getProfile()
     }
   }
 
@@ -27,7 +36,7 @@ class App extends React.Component {
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
-            <Route exact path='/login' component={Landing} />
+            <Route exact path='/login' render={(props) => <Landing getProfile={this.getProfile} {...props}/>} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/profile' component={Profile} />
           </div>
