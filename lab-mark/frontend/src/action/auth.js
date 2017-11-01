@@ -16,8 +16,7 @@ export const signup = (user) => (store) => {
     .send(user)
     .withCredentials()
     .then(res => {
-      console.log({res})
-      return store.dispatch(tokenSet(res.text))
+      return store.dispatch(tokenSet(JSON.parse(res.text).token))
     })
 }
 
@@ -26,7 +25,6 @@ export const login = (user) => (store) => {
     .auth(user.username, user.password)
     .withCredentials()
     .then(res => {
-      console.log({res})
-      return store.dispatch(tokenSet(res.text))
+      return store.dispatch(tokenSet(JSON.parse(res.text).token))
     })
 }
