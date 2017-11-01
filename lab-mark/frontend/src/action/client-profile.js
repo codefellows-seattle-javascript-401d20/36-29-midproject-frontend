@@ -1,12 +1,10 @@
 import superagent from 'superagent'
 
-// sync actions
 export const set = (user) => ({
   type: 'CLIENT_PROFILE_SET',
   payload: user,
 })
 
-// async actions
 export const create = (user) => (store) => {
   let {token} = store.getState()
   return superagent.post(`${__API_URL__}/profiles`)
