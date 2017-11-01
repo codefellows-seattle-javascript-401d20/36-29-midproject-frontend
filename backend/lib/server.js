@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');
@@ -20,8 +22,8 @@ const production = process.env.NODE_ENV === 'production';
 
 // Register middleware
 app.use(jsonParser);
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(morgan(production ? 'combined' : 'dev'));
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 
 // Register routes
 app.use(authRouter);
