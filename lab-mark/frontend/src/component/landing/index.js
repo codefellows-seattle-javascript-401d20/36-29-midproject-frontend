@@ -33,7 +33,6 @@ class Landing extends React.Component {
     let {
       location,
     } = this.props
-    console.log('Landing props', this.props)
     return (
       <div className='landing'>
         {util.renderIf(location.pathname === '/',

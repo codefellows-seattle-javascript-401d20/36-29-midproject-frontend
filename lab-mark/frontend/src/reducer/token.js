@@ -1,7 +1,6 @@
 import * as util from '../lib/util.js'
 
 let token = util.cookieFetch('X-Charity-Token')
-console.log('TOKEN', token)
 let intialState = token ? token : null
 
 export default (state=intialState, {type, payload}) => {
