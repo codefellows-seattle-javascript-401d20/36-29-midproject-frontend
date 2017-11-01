@@ -45,7 +45,6 @@ module.exports = {
         return reject(new Error('__SERVER_ERROR__ server is already on'));
       server = app.listen(process.env.PORT, () => {
         console.log('__SERVER_ON__', process.env.PORT);
-        console.log('CORS', process.env.CORS_ORIGIN);
         return resolve();
       });
     })

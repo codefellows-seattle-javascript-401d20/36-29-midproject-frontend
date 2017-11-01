@@ -46,7 +46,7 @@ class AuthForm extends React.Component {
           onChange={this.handleChange}
         />
 
-        {util.renderIf(type != 'login',
+        {util.renderIf(type !== 'login',
           <input
             name='email'
             placeholder='email'
