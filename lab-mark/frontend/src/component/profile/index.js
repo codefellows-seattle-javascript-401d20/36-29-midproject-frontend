@@ -15,7 +15,6 @@ class Profile extends React.Component {
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
-  // create user and switch to dashboard
   handleCreate(profile){
     this.props.profileCreate(profile)
       .then(() => {
@@ -23,7 +22,6 @@ class Profile extends React.Component {
       })
   }
 
-  // update user and toggle editing off
   handleUpdate(profile){
     this.props.profileUpdate(profile)
     this.setState({editing: false})
@@ -40,8 +38,10 @@ class Profile extends React.Component {
         <h2> profile </h2>
         { profile ?
           <div>
-            <h2> {profile.username} </h2>
-            <h3> {profile.email} </h3>
+            <h2> Name: {profile.firstName} {profile.lastName} </h2>
+            <h4> Address: {profile.city}, {profile.state} </h4>
+            <h4> Goal: {profile.donationGoal} </h4>
+            <h4> Current: {profile.moneySpent} </h4>
             { this.state.editing ?
               <div>
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />

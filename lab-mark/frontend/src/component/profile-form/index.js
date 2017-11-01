@@ -23,6 +23,7 @@ let emptyState = {
   bioDirty: false,
   bioError: '',
 }
+
 class ProfileForm extends React.Component {
   constructor(props){
     super(props)
@@ -37,11 +38,13 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(e){
-    let {value} = e.target
+    let {value, name, type} = e.target
+    value = type === 'number' ? Number(value) : value
+    value = value === 0 ? '' : value
     this.setState({
-      bio: value,
-      bioDirty: true,
-      bioError: value ? null : emptyState.bioError,
+      [name]: value,
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: value ? null : emptyState[`${name}Error`],
     })
   }
 
@@ -58,8 +61,49 @@ class ProfileForm extends React.Component {
         className='profile-form'
         onSubmit={this.handleSubmit}>
 
+        <input
+          type='text'
+          name='firstName'
+          placeholder='First Name'
+          value={this.state.firstName}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='text'
+          name='lastName'
+          placeholder='Last Name'
+          value={this.state.lastName}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='text'
+          name='city'
+          placeholder='City'
+          value={this.state.city}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='text'
+          name='state'
+          placeholder='State'
+          value={this.state.state}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='number'
+          name='donationGoal'
+          placeholder='Goal'
+          value={this.state.donationGoal}
+          onChange={this.handleChange}
+        />
+
         <textarea
           name='bio'
+          placeholder='Tell us about yourself...'
           value={this.state.bio}
           onChange={this.handleChange}
         />
