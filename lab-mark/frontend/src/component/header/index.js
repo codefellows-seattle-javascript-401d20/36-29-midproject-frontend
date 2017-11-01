@@ -8,7 +8,7 @@ class Header extends React.Component {
   render(){
     return (
       <header className='header'>
-        <h1> sluggram </h1>
+        <h1> Charity Choice </h1>
         <nav>
           {util.renderIf(!this.props.loggedIn,
             <ul>

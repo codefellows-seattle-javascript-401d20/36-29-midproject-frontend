@@ -29,11 +29,12 @@ export const update = (user) => (store) => {
     })
 }
 
-export const fetch = (user) => (store) => {
+export const fetch = () => (store) => {
   let {token} = store.getState()
-  return superagent.get(`${__API_URL__}/profiles/${user._id}`)
+  return superagent.get(`${__API_URL__}/profiles/me`)
     .set('Authorization', `Bearer ${token}`)
     .then(res => {
+      console.log('RESPONSE--->', res.body)
       return store.dispatch(set(res.body))
     })
 }

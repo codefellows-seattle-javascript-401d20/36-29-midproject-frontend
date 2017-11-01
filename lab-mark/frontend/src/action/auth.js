@@ -31,6 +31,6 @@ export const login = (user) => (store) => {
 }
 
 export const logout = () => {
-  cookieDelete('X-Sluggram-Token')
+  cookieDelete('X-Charity-Token')
   return tokenRemove()
 }
