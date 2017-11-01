@@ -19,7 +19,6 @@ class AuthRedirect extends React.Component {
       }
     }
 
-    console.log('to', to)
     return (
       <div className='auth-redirect'>
         { to ? <Redirect to={to} /> : undefined }
