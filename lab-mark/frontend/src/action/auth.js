@@ -1,4 +1,5 @@
 import superagent from 'superagent'
+import {cookieDelete} from '../lib/util.js'
 
 // sync
 export const tokenSet = (token) => ({
@@ -27,4 +28,9 @@ export const login = (user) => (store) => {
     .then(res => {
       return store.dispatch(tokenSet(JSON.parse(res.text).token))
     })
+}
+
+export const logout = () => {
+  cookieDelete('X-Sluggram-Token')
+  return tokenRemove()
 }
