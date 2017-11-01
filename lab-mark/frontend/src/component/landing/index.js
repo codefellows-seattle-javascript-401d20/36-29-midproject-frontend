@@ -17,6 +17,7 @@ class Landing extends React.Component {
     this.props.login(user)
       .then(() => {
         this.props.history.push('/dashboard')
+        this.props.getProfile()
       })
       .catch(console.error)
   }
@@ -30,6 +31,7 @@ class Landing extends React.Component {
   }
 
   render(){
+    console.log('PROPS', this.props)
     let {
       location,
     } = this.props
