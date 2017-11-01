@@ -1,9 +1,14 @@
 import React from 'react';
+import * as util from '../../lib/util.js';
+import validator from 'validator';
 
 let emptyState = {
-  bio: '',
-  bioDirty: false,
-  bioError: 'Bio is required!',
+  firstName: '',
+  firstNameDirty: false,
+  firstNameError: 'First name is required!',
+  lastName: '',
+  lastNameDirty: false,
+  lastNameError: 'Last name is required!',
 }
 class ProfileForm extends React.Component {
   constructor(props){
@@ -19,12 +24,12 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(e){
-    let {value} = e.target;
+    let {name, value} = e.target;
     this.setState({
-      bio: value,
-      bioDirty: true,
-      bioError: value ? null : emptyState.bioError,
-    })
+      [name]: value,
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: value ? null : emptyState.bioError,
+    });
   }
 
   handleSubmit(e){
@@ -41,8 +46,14 @@ class ProfileForm extends React.Component {
         onSubmit={this.handleSubmit}>
 
         <textarea
-          name='bio'
-          value={this.state.bio}
+          name='firstName'
+          value={this.state.firstName}
+          onChange={this.handleChange}
+          />
+
+        <textarea
+          name='lastName'
+          value={this.state.lastName}
           onChange={this.handleChange}
           />
 

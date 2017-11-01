@@ -12,9 +12,14 @@ describe('clientProfile reducer', () => {
       payload: {
         username: 'usagi',
         email: 'serenity@silvermillenuim.com',
+        firstName: 'Usagi',
+        lastName: 'Tsukino',
+        city: 'Seattle',
+        state: 'WA',
+        donationGoal: 200,
+        moneySpent: 100,
         bio: 'In the name of the moon',
-        _id: '535',
-        owner: 'tsukino',
+        account: '535',
       },
     };
     let state = reducer(undefined, action);

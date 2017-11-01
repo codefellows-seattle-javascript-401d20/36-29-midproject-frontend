@@ -49,9 +49,9 @@ class Profile extends React.Component {
               </div>
             :
               <div>
-                <p> {profile.bio} </p>
+                <p> {profile.firstName} {profile.lastName}</p>
                 <button onClick={() => this.setState({editing: true})}>
-                  Edit Bio
+                  Edit Profile
                 </button>
 
               </div>

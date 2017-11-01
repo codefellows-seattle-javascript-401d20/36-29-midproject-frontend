@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchClientProfile: () => dispatch(clientProfile.fetch())
 })
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App)
