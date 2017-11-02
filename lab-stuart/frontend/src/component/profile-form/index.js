@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 let emptyState = {
   firstName: '',
@@ -15,6 +15,7 @@ class ProfileForm extends React.Component {
     this.state = props.profile ? {...emptyState, ...props.profile} : emptyState;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleValidate = this.handleValidate.bind(this);
   };
 
   componentWillReceiveProps(props){
@@ -23,14 +24,11 @@ class ProfileForm extends React.Component {
   };
 
   handleChange(e){
-    let {value} = e.target;
+    let {name, value} = e.target;
     this.setState({
-      firstName: value,
-      firstNameDirty: true,
-      firstNameError: value ? null : emptyState.firstNameError,
-      lastName: value,
-      lastNameDirty: true,
-      lastNameError: value ? null : emptyState.lastNameError,
+      [name]: value,
+      [name+'Dirty']: true,
+      [name+'Error']: this.handleValidate(e.target),
     });
   };
 
@@ -40,6 +38,16 @@ class ProfileForm extends React.Component {
     this.setState(emptyState);
   };
 
+  handleValidate({type, placeholder, value}){
+    switch(type){
+      case 'text':
+        if(value.length === 0)
+          return placeholder + ' is required.'
+        return null
+      default:
+        return null
+    }
+  }
 
   render(){
     return (
@@ -47,20 +55,24 @@ class ProfileForm extends React.Component {
         className='profile-form'
         onSubmit={this.handleSubmit}>
 
+        <p>{this.state.firstNameError}</p>
         <label htmlFor='firstName'>First Name</label>
         <input
           id='firstName'
           name='firstName'
           value={this.state.firstName}
           onChange={this.handleChange}
+          placeholder='First Name'
           />
 
+          <p>{this.state.lastNameError}</p>
           <label htmlFor='lastName'>Last Name</label>
           <input
             id='lastName'
             name='lastName'
             value={this.state.lastName}
             onChange={this.handleChange}
+            placeholder='Last Name'
             />
 
         <button type='submit'>{this.props.profile ? 'update' : 'create'} profile</button>
