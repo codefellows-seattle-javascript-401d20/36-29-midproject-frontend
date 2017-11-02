@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
+// how to use
+// run the following command
+//$: node load-charities.js asset/charity.json
+
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/dev';
 const jsonFile = process.argv[2];
 
