@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 class AuthRedirect extends React.Component {
   render() {
     let { location, history, token } = this.props
-    let pathname = location
+    let { pathname } = location
     let pathTo = null
     if (pathname === '/login' || pathname === '/signup' || pathname === '/') {
       if (token)

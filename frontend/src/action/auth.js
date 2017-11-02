@@ -1,4 +1,5 @@
 import superagent from 'superagent'
+import { cookieDelete } from '../lib/util.js'
 
 // synchronous functions => object
 export const tokenSet = token =>
@@ -6,6 +7,11 @@ export const tokenSet = token =>
 
 export const tokenRemove = () =>
   ({ type: 'TOKEN_REMOVE' })
+
+export const logout = () => {
+  cookieDelete('X-CharityChoice-Token')
+  return tokenRemove()
+}
 
 // async functions => function
 export const signup = user => store => {
