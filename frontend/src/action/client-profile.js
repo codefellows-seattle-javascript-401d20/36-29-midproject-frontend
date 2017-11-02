@@ -1,4 +1,5 @@
-import superagent from 'superagent';
+import superagent from
+'superagent';
 
 export const set = (user) => ({
   type: 'CLIENT_PROFILE_SET',
