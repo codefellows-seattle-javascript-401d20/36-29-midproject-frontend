@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import Header from '../header';
+import Search from '../search';
 import Landing from '../landing';
 import Profile from '../profile';
 import Dashboard from '../dashboard';
@@ -25,10 +26,11 @@ class App extends React.Component {
             <Header />
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
-            <Route exact path='/signup' component={Landing} />
+            <Route exact path='/search' component={Search} />
             <Route exact path='/login' component={Landing} />
-            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/signup' component={Landing} />
             <Route exact path='/profile' component={Profile} />
+            <Route exact path='/dashboard' component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>

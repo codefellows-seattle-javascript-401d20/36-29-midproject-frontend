@@ -50,8 +50,7 @@ class Landing extends React.Component {
           <div>
             <h2>Signup</h2>
             <AuthForm onComplete={this.handleSignup} />
-            <p>Already have an account?</p>
-            <Link to='/login'>login</Link>
+            <p><Link to='/login'>login</Link></p>
           </div>
         )}
 
@@ -59,8 +58,7 @@ class Landing extends React.Component {
           <div>
             <h2>Login</h2>
             <AuthForm type='login' onComplete={this.handleLogin} />
-            <p>Dont have an account?</p>
-            <Link to='/signup'>signup</Link>
+            <p><Link to='/signup'>signup</Link></p>
           </div>
         )}
       </div>

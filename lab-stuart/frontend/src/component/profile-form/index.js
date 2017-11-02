@@ -65,17 +65,19 @@ class ProfileForm extends React.Component {
           placeholder='First Name'
           />
 
-          <p>{this.state.lastNameError}</p>
-          <label htmlFor='lastName'>Last Name</label>
-          <input
-            id='lastName'
-            name='lastName'
-            value={this.state.lastName}
-            onChange={this.handleChange}
-            placeholder='Last Name'
-            />
+        <p>{this.state.lastNameError}</p>
+        <label htmlFor='lastName'>Last Name</label>
+        <input
+          id='lastName'
+          name='lastName'
+          value={this.state.lastName}
+          onChange={this.handleChange}
+          placeholder='Last Name'
+          />
 
-        <button type='submit'>{this.props.profile ? 'update' : 'create'} profile</button>
+        <p>
+          <button type='submit'>{this.props.profile ? 'update' : 'create'} profile</button>
+        </p>
       </form>
     )
   }

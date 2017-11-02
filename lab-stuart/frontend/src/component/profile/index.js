@@ -35,23 +35,25 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <h2>Profile</h2>
+        <h1>Profile</h1>
         { profile ?
           <div>
+            <h2>{profile.firstName} {profile.lastName}</h2>
             { this.state.editing ?
               <div>
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />
-                <button onClick={() => this.setState({editing: false})}>
-                  Cancel
-                </button>
+                <p>
+                  <button onClick={() => this.setState({editing: false})}>
+                    Cancel
+                  </button>
+                </p>
               </div>
             :
-              <div>
-                <p>{profile.bio}</p>
+              <p>
                 <button onClick={() => this.setState({editing: true})}>
                   Edit Profile
                 </button>
-              </div>
+              </p>
             }
           </div>
         :
@@ -69,7 +71,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
-  //fetchClientProfile: () => dispatch(clientProfile.fetch())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

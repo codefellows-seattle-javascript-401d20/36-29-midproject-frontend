@@ -12,22 +12,21 @@ class Header extends React.Component {
         <nav>
             {util.renderIf(!this.props.loggedIn,
               <ul>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/login'>Login</Link></li>
-                <li><Link to='/signup'>Signup</Link></li>
+                <li><Link to='/'>home</Link></li>
+                <li><Link to='/login'>login</Link></li>
+                <li><Link to='/signup'>signup</Link></li>
               </ul>
             )}
             {util.renderIf(this.props.loggedIn,
               <ul>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
-                <li><Link to='/search'>Search</Link></li>
-                <li><Link to='/upload'>Upload</Link></li>
-                <li><Link to='/profile'>Profile</Link></li>
+                <li><Link to='/dashboard'>dashboard</Link></li>
+                <li><Link to='/search'>search</Link></li>
+                <li><Link to='/profile'>profile</Link></li>
               </ul>
             )}
         </nav>
         {util.renderIf(this.props.loggedIn,
-          <button onClick={this.props.logout}>Logout</button>)}
+          <button onClick={this.props.logout}>logout</button>)}
       </header>
     )
   }
