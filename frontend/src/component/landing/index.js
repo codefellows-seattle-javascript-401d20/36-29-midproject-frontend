@@ -68,8 +68,8 @@ class Landing extends React.Component {
 
 const mapStateToProps = state => ({ token: state.token })
 const mapDispatchToProps = dispatch => ({
-  signup: (user) => dispatch(auth.signup(user)),
-  login: (user) => dispatch(auth.login(user)),
+  signup: user => dispatch(auth.signup(user)),
+  login: user => dispatch(auth.login(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

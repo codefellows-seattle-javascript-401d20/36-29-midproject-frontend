@@ -2,10 +2,10 @@
 
 export const renderIf = (test, component) => test ? component : undefined
 
-export const classToggler = (options) => 
+export const classToggler = options => 
   Object.keys(options).filter(key => options[key]).join(' ')
 
-let cookieTime = (days) => {
+let cookieTime = days => {
   let result = new Date()
   result.setTime(result.getTime() + (days * 86400000))
   return result.toUTCString()
@@ -24,10 +24,10 @@ export const cookieFetchAll = () => {
     }))
 }
 
-export const cookieFetch = (key) => {
+export const cookieFetch = key => {
   return cookieFetchAll()[key]
 }
 
-export const cookieDelete = (key) => {
+export const cookieDelete = key => {
   document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
 }

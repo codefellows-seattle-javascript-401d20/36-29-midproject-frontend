@@ -1,14 +1,14 @@
 import superagent from 'superagent'
 
 // synchronous functions => object
-export const tokenSet = (token) =>
+export const tokenSet = token =>
   ({ type: 'TOKEN_SET', payload: token })
 
 export const tokenRemove = () =>
   ({ type: 'TOKEN_REMOVE' })
 
 // async functions => function
-export const signup = (user) => (store) => {
+export const signup = user => store => {
   return superagent.post(`${__API_URL__}/auth`)
     .send(user)
     .withCredentials()
@@ -18,7 +18,7 @@ export const signup = (user) => (store) => {
     })
 }
 
-export const login = (user) => (store) => {
+export const login = user => store => {
   return superagent.get(`${__API_URL__}/auth`)
     .auth(user.username, user.password)
     .withCredentials()

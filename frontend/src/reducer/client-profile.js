@@ -1,4 +1,4 @@
-export const validateProfile = (profile) => {
+export const validateProfile = profile => {
   if (!profile)
     throw new Error('profile required')
   let { firstName, lastName } = profile
