@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ProfileForm from '..//profile-form'
+import ProfileForm from '../profile-form'
+import PhotoForm from '../photo-form'
 import * as util from '../../lib/util.js'
 import * as clientProfile from '../../action/client-profile.js'
 
@@ -13,6 +14,7 @@ class Profile extends React.Component {
 
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
   handleCreate(profile){
@@ -27,6 +29,10 @@ class Profile extends React.Component {
     this.setState({editing: false})
   }
 
+  handleUpload(photo) {
+    this.props.profileUploadPhoto(photo)
+  }
+
   render(){
     let {
       profile,
@@ -34,14 +40,17 @@ class Profile extends React.Component {
     } = this.props
 
     return (
-      <div>
-        <h2> profile </h2>
+      <div className='profile'>
+        <h2> Profile </h2>
         { profile ?
           <div>
-            <h2> Name: {profile.firstName} {profile.lastName} </h2>
-            <h4> Address: {profile.city}, {profile.state} </h4>
-            <h4> Goal: {profile.donationGoal} </h4>
-            <h4> Current: {profile.moneySpent} </h4>
+            <img style={{width: '300px'}} src={profile.photo} alt='<profile image>' className='profile-image' />
+            { this.state.editing ? <PhotoForm profile={profile} onComplete={this.handleUpload}/> : <p> Edit bio to change photo </p> }
+            <h2> {profile.firstName} {profile.lastName} </h2>
+            <h4> {profile.city}, {profile.state} </h4>
+            <h4> Goal: ${profile.donationGoal} </h4>
+            <h4> Current: ${profile.moneySpent === null ? 0 : profile.moneySpent} </h4>
+            <h4> About me: </h4>
             { this.state.editing ?
               <div>
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />
@@ -74,6 +83,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
+  profileUploadPhoto: (photo) => dispatch(clientProfile.upload(photo)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

@@ -36,3 +36,14 @@ export const fetch = () => (store) => {
       return store.dispatch(set(res.body))
     })
 }
+
+export const upload = (photo) => (store) => {
+  let {token} = store.getState()
+  return superagent.put(`${__API_URL__}/profiles/avatar`)
+    .set('Authorization', `Bearer ${token}`)
+    .field('upload', 'photo')
+    .attach('photo', photo.photo)
+    .then(res => {
+      return store.dispatch(set(res.body))
+    })
+}
