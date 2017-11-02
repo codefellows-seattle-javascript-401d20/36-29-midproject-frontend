@@ -1,4 +1,5 @@
 import React from 'react';
+import * as util from '../../lib/util.js';
 
 let emptyState = {
   firstName: '',
@@ -22,6 +23,10 @@ class ProfileForm extends React.Component {
     if(props.profile)
       this.setState(props.profile);
   };
+
+  componentDidMount(){
+    console.log('mounted');
+  }
 
   handleChange(e){
     let {name, value} = e.target;
@@ -55,7 +60,9 @@ class ProfileForm extends React.Component {
         className='profile-form'
         onSubmit={this.handleSubmit}>
 
-        <p>{this.state.firstNameError}</p>
+        {util.renderIf(this.state.firstNameDirty,
+          <p>{this.state.firstNameError}</p>
+        )}
         <label htmlFor='firstName'>First Name</label>
         <input
           id='firstName'
@@ -65,7 +72,9 @@ class ProfileForm extends React.Component {
           placeholder='First Name'
           />
 
-        <p>{this.state.lastNameError}</p>
+        {util.renderIf(this.state.lastNameDirty,
+          <p>{this.state.lastNameError}</p>
+        )}
         <label htmlFor='lastName'>Last Name</label>
         <input
           id='lastName'
