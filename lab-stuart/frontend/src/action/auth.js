@@ -1,3 +1,4 @@
+import {cookieDelete} from '../lib/util.js';
 import superagent from 'superagent';
 
 export const tokenSet = (token) => ({
@@ -8,6 +9,11 @@ export const tokenSet = (token) => ({
 export const tokenRemove = () => ({
   type: 'TOKEN_REMOVE',
 });
+
+export const logout = () => {
+  cookieDelete('X-Charity-Token');
+  return tokenRemove();
+};
 
 export const signup = (user) => (store) => {
   return superagent.post(`${__API_URL__}/auth`)

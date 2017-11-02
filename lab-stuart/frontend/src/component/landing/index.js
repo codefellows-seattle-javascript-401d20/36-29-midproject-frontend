@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import AuthForm from '../auth-form';
 import * as util from '../../lib/util.js';
 import * as auth from '../../action/auth.js';
+import * as clientProfile from '../../action/client-profile.js';
 
 class Landing extends React.Component {
   constructor(props){
@@ -16,6 +17,7 @@ class Landing extends React.Component {
   handleLogin(user){
     this.props.login(user)
     .then(() => {
+      this.props.fetchClientProfile();
       this.props.history.push('/dashboard');
     })
     .catch(console.error);
@@ -24,7 +26,7 @@ class Landing extends React.Component {
   handleSignup(user){
     this.props.signup(user)
     .then(() => {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/profile');
     })
     .catch(console.error);
   }
@@ -41,10 +43,6 @@ class Landing extends React.Component {
         {util.renderIf(location.pathname === '/',
           <div>
             <h2>Welcome</h2>
-            <ul>
-              <li><Link to='/signup'>signup</Link></li>
-              <li><Link to='/login'>login</Link></li>
-            </ul>
           </div>
         )}
 
@@ -77,6 +75,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   signup: (user) => dispatch(auth.signup(user)),
   login: (user) => dispatch(auth.login(user)),
+  fetchClientProfile: () => dispatch(clientProfile.fetch())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
