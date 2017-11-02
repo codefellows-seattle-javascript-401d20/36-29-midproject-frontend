@@ -16,8 +16,8 @@ class Landing extends React.Component {
 
   handleLogin(user){
     this.props.login(user)
-    .then(() => {
-      this.props.fetchClientProfile();
+    .then((user) => {
+      this.props.fetchClientProfile(user);
       this.props.history.push('/dashboard');
     })
     .catch(console.error);
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   signup: (user) => dispatch(auth.signup(user)),
   login: (user) => dispatch(auth.login(user)),
-  fetchClientProfile: () => dispatch(clientProfile.fetch()),
+  fetchClientProfile: (user) => dispatch(clientProfile.fetch(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

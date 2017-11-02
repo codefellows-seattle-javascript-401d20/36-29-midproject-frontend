@@ -6,6 +6,7 @@ const multer = require('multer');
 const s3 = require('../lib/s3.js');
 const bearerAuth = require('../lib/bearer-auth-middleware.js');
 const Profile = require('../model/profile.js');
+const Account = require('../model/account.js');
 
 const upload = multer({ dest: `${__dirname}/../temp` });
 
@@ -13,6 +14,7 @@ let fuzzy = (filterTerm) => new RegExp('.*' + filterTerm.toLowerCase().split('')
 
 module.exports = new Router()
   .post('/profiles', bearerAuth, (req, res, next) => {
+    console.log('req.body: ', req.body);
     return new Profile({
       ...req.body,
       photo: undefined,
@@ -21,6 +23,26 @@ module.exports = new Router()
       email: req.account.email,
     }).save()
       .then(profile => {
+        res.json(profile);
+      })
+      .catch(next);
+  })
+  .get('/profiles/me', bearerAuth, (req, res, next) => {
+    // get a token from front-end
+    // locate user based on token
+    // if located
+    // find the user's profile
+    // return the profile as json
+    // else return 404
+    // console.log('req.body: ', req.body);
+    Account.find({tokenSeed: req.account.tokenSeed})
+      .then((account) =>
+      {
+        if(account)
+          Profile.find({account: account._id});})
+      .then(profile => {
+        // if (!profile)
+        //   throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
         res.json(profile);
       })
       .catch(next);

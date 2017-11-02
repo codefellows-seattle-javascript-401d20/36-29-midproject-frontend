@@ -29,8 +29,6 @@ export const login = (user) => (store) => {
   .auth(user.username, user.password)
   .withCredentials()
   .then(res => {
-    console.log('test');
-    console.log('res: ', {res});
     return store.dispatch(tokenSet(res.body.token));
   });
 };
