@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import { Landing } from '../landing'
-import { Dashboard } from '../dashboard'
-import { AuthRedirect } from '../auth-redirect'
+import Landing from '../landing'
+import Dashboard from '../dashboard'
+import AuthRedirect from '../auth-redirect'
 
 class App extends React.Component {
   render() {

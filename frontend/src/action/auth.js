@@ -9,7 +9,7 @@ export const tokenRemove = () =>
 
 // async functions => function
 export const signup = (user) => (store) => {
-  return superagent.post(`${API_URL}/auth`)
+  return superagent.post(`${__API_URL__}/auth`)
     .send(user)
     .withCredentials()
     .then(res => {
@@ -19,7 +19,7 @@ export const signup = (user) => (store) => {
 }
 
 export const login = (user) => (store) => {
-  return superagent.get(`${API_URL}/auth`)
+  return superagent.get(`${__API_URL__}/auth`)
     .auth(user.username, user.password)
     .withCredentials()
     .then(res => {

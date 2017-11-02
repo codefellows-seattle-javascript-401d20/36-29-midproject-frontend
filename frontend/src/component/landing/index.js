@@ -39,6 +39,7 @@ class Landing extends React.Component {
           <div>
             <h2>Welcome</h2>
             <Link to='/signup'>signup</Link>
+            <br />
             <Link to='/login'>login</Link>
           </div>
         )}
@@ -47,7 +48,7 @@ class Landing extends React.Component {
           <div>
             <h2>Sign Up</h2>
             <AutoForm onComplete={this.handleSignup} />
-            <p>Already have an account</p>
+            <p>Already have an account?</p>
             <Link to='/login'>login</Link>
           </div>
         )}
@@ -56,6 +57,7 @@ class Landing extends React.Component {
           <div>
             <h2>login</h2>
             <AutoForm type='login' onComplete={this.handleLogin} />
+            <p>Need an account?</p>
             <Link to='/signup'>signup</Link>
           </div>
         )}
