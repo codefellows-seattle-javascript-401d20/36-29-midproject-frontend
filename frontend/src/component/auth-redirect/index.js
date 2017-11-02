@@ -19,11 +19,12 @@ class AuthRedirect extends React.Component {
     console.log('Path To', pathTo)
     return (
       <div className='auth-redirect'>
-        {pathTo ? <Redirect pathTo={pathTo} /> : undefined}
+        {pathTo ? <Redirect to={pathTo} /> : undefined}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({ token: state.token })
+
 export default connect(mapStateToProps)(AuthRedirect)
