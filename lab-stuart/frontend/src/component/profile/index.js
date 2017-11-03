@@ -44,14 +44,14 @@ class Profile extends React.Component {
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />
                 <p>
                   <button onClick={() => this.setState({editing: false})}>
-                    Cancel
+                  cancel
                   </button>
                 </p>
               </div>
             :
               <p>
                 <button onClick={() => this.setState({editing: true})}>
-                  Edit Profile
+                edit profile
                 </button>
               </p>
             }
