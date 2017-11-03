@@ -32,7 +32,6 @@ export const fetch = () => (store) => {
   return superagent.get(`${__API_URL__}/profiles/me`)
     .set('Authorization', `Bearer ${token}`)
     .then(res => {
-      console.log('RESPONSE--->', res.body)
       return store.dispatch(set(res.body))
     })
 }

@@ -4,6 +4,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom'
 
+import Search from '../search'
 import Header from '../header'
 import Landing from '../landing'
 import Profile from '../profile'
@@ -42,6 +43,7 @@ class App extends React.Component {
               <Route exact path='/login' render={(props) => <Landing getProfile={this.getProfile} {...props}/>} />
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/search' component={Search} />
             </main>
           </div>
         </BrowserRouter>

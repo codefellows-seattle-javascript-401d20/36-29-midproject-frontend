@@ -23,7 +23,6 @@ class Header extends React.Component {
             <ul>
               <li> <Link to='/dashboard'> dashboard </Link> </li>
               <li> <Link to='/search'> search </Link> </li>
-              <li> <Link to='/upload'> upload </Link> </li>
               <li> <Link to='/profile'> profile </Link> </li>
               <li> {util.renderIf(this.props.loggedIn,
                 <button onClick={this.props.logout}> logout </button>)} </li>

@@ -28,8 +28,8 @@ charityRouter.get('/charities', bearerAuth, (req, res, next) => {
 
   let charitiesCache;
   Charity.find(req.query)
-    .skip(page * 100)
-    .limit(100)
+    .skip(page * 10)
+    .limit(10)
     .then(charities => {
       charitiesCache = charities;
       return Charity.find(req.query).count();
@@ -40,12 +40,12 @@ charityRouter.get('/charities', bearerAuth, (req, res, next) => {
         data: charitiesCache,
       };
 
-      let lastPage = Math.floor(count / 100);
-      res.links({
+      let lastPage = Math.floor(count / 10);
+      result.links = {
         next: `http://localhost/charities?page=${page+1}`,
         prev: `http://localhost/charities?page=${page < 1 ? 0 : page - 1}`,
         last: `http://localhost/charities?page=${lastPage}`,
-      });
+      };
       res.json(result);
     })
     .catch(next);
