@@ -1,0 +1,16 @@
+@import 'vars';
+
+.container {
+  height: 100%;
+
+  .header {
+    height: 10%;
+    padding: $pad;
+    border-bottom: 2px solid black;
+  }
+
+  main {
+    height: 80%;
+    padding: $pad;
+  }
+}

@@ -1,12 +1,10 @@
 import superagent from 'superagent'
 
-// sync actions
 export const set = (user) => ({
   type: 'CLIENT_PROFILE_SET',
   payload: user,
 })
 
-// async actions
 export const create = (user) => (store) => {
   let {token} = store.getState()
   return superagent.post(`${__API_URL__}/profiles`)
@@ -35,6 +33,17 @@ export const fetch = () => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .then(res => {
       console.log('RESPONSE--->', res.body)
+      return store.dispatch(set(res.body))
+    })
+}
+
+export const upload = (photo) => (store) => {
+  let {token} = store.getState()
+  return superagent.put(`${__API_URL__}/profiles/avatar`)
+    .set('Authorization', `Bearer ${token}`)
+    .field('upload', 'photo')
+    .attach('photo', photo.photo)
+    .then(res => {
       return store.dispatch(set(res.body))
     })
 }

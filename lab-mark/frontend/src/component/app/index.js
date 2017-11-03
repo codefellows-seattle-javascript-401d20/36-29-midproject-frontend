@@ -1,3 +1,5 @@
+import './app.scss'
+
 import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom'
@@ -31,14 +33,16 @@ class App extends React.Component {
     return (
       <div className='app'>
         <BrowserRouter>
-          <div>
+          <div className='container'>
             <Header />
-            <Route path='*' component={AuthRedirect} />
-            <Route exact path='/' component={Landing} />
-            <Route exact path='/signup' component={Landing} />
-            <Route exact path='/login' render={(props) => <Landing getProfile={this.getProfile} {...props}/>} />
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/profile' component={Profile} />
+            <main>
+              <Route path='*' component={AuthRedirect} />
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/signup' component={Landing} />
+              <Route exact path='/login' render={(props) => <Landing getProfile={this.getProfile} {...props}/>} />
+              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/profile' component={Profile} />
+            </main>
           </div>
         </BrowserRouter>
       </div>

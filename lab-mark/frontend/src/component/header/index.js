@@ -1,3 +1,5 @@
+import './header.scss'
+
 import React from 'react'
 import * as auth from '../../action/auth.js'
 import * as util from '../../lib/util.js'
@@ -23,11 +25,11 @@ class Header extends React.Component {
               <li> <Link to='/search'> search </Link> </li>
               <li> <Link to='/upload'> upload </Link> </li>
               <li> <Link to='/profile'> profile </Link> </li>
+              <li> {util.renderIf(this.props.loggedIn,
+                <button onClick={this.props.logout}> logout </button>)} </li>
             </ul>
           )}
         </nav>
-        {util.renderIf(this.props.loggedIn,
-          <button onClick={this.props.logout}> logout </button>)}
       </header>
     )
   }

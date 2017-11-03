@@ -65,7 +65,7 @@ module.exports = {
               loader: 'sass-loader',
               options: {
                 sourceMap: production ? false : true,
-                includePaths: [`${__dirname}/src/style`],
+                includePaths: [`${__dirname}/frontend/src/style`],
               },
             },
           ],

@@ -1,3 +1,5 @@
+import './style/main.scss'
+
 import React from 'react'
 import ReactDom from 'react-dom'
 import {Provider} from 'react-redux'
@@ -11,6 +13,7 @@ import reporter from './lib/redux-reporter.js'
 const store = createStore(reducer, applyMiddleware(thunk, reporter))
 
 let container = document.createElement('div')
+container.className = 'root'
 document.body.appendChild(container)
 
 ReactDom.render(
