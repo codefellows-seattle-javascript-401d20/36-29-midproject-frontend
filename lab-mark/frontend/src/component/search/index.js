@@ -9,10 +9,15 @@ class Search extends React.Component {
     super(props)
 
     this.handleSearch = this.handleSearch.bind(this)
+    this.handlChangePage = this.handleChangePage.bind(this)
   }
 
   handleSearch(query) {
     this.props.search(query)
+  }
+
+  handleChangePage(url) {
+    this.props.changePage(url)
   }
 
   render(){
@@ -30,9 +35,9 @@ class Search extends React.Component {
           />
         )}
         {charities.data.length ?
-          <p> <button onClick={() => {this.handleSearch(charities.links.prev)}}>Previous</button>
-            <button onClick={() => {this.handleSearch(charities.links.next)}}>Next</button>
-            <button onClick={() => {this.handleSearch(charities.links.last)}}>Last</button> </p>
+          <p> <button onClick={() => {this.handleChangePage(charities.links.prev)}}>Previous</button>
+            <button onClick={() => {this.handleChangePage(charities.links.next)}}>Next</button>
+            <button onClick={() => {this.handleChangePage(charities.links.last)}}>Last</button> </p>
           : <p> No results </p>}
       </div>
     )
@@ -44,6 +49,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   search: (query) => dispatch(charity.search(query)),
+  changePage: (url) => dispatch(charity.changePage(url)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

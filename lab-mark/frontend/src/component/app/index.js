@@ -10,6 +10,7 @@ import Landing from '../landing'
 import Profile from '../profile'
 import Dashboard from '../dashboard'
 import AuthRedirect from '../auth-redirect'
+import * as favorite from '../../action/favorite.js'
 import * as clientProfile from '../../action/client-profile.js'
 
 class App extends React.Component {
@@ -24,9 +25,15 @@ class App extends React.Component {
       .catch(console.error)
   }
 
+  getFavorites() {
+    this.props.fetchFavorites()
+      .catch(console.error)
+  }
+
   componentDidMount(){
     if(this.props.loggedIn){
       this.getProfile()
+      this.getFavorites()
     }
   }
 
@@ -58,6 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchClientProfile: () => dispatch(clientProfile.fetch()),
+  fetchFavorites: () => dispatch(favorite.fetch()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

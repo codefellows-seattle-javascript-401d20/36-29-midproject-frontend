@@ -19,13 +19,13 @@ const loadJsonFile = `mongoimport --host localhost --db dev --collection chariti
 console.log('ID', CHARITY_APP_ID, 'key:', CHARITY_APP_KEY);
 
 const states = [
-  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC',
-  'FL', 'GA', 'HI', 'ID', 'IL', 'IN',
-  'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA',
+  // 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC',
+  // 'FL', 'GA', 'HI', 'ID', 'IL', 'IN',
+  // 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA',
   // 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
   // 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR',
-  // 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT',
-  // 'VA', 'WA', 'WV', 'WI', 'WY',
+  'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT',
+  'VA', 'WA', 'WV', 'WI', 'WY',
 ];
 
 console.log('Length:', states.length);
