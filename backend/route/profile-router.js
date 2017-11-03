@@ -41,9 +41,10 @@ module.exports = new Router()
         if(account)
           Profile.find({account: account._id});})
       .then(profile => {
-        // if (!profile)
-        //   throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
-        res.json(profile);
+        if (!profile)
+          console.log('No profile created yet!');
+        // throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
+        else{res.json(profile);}
       })
       .catch(next);
   })
@@ -109,6 +110,21 @@ module.exports = new Router()
       })
       .catch(next);
   })
+
+  // .put('/profiles/me', bearerAuth, (req, res, next) => {
+  //   Account.find({tokenSeed: req.account.tokenSeed})
+  //     .then((account) =>
+  //     {
+  //       if(account)
+  //         Profile.findByIdAndUpdate({account: account._id}, req.body, { new: true, runValidators: true });})
+  //     .then(profile => {
+  //       if (!profile)
+  //         // console.log('No profile created yet!');
+  //         throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
+  //       else{res.json(profile);}
+  //     })
+  //     .catch(next);
+  // })
 
   .put('/profiles/:id', bearerAuth, (req, res, next) => {
     if (!req.body.firstName || !req.body.lastName)

@@ -19,7 +19,7 @@ export const create = (user) => (store) => {
 
 export const update = (user) => (store) => {
   let {token} = store.getState();
-  return superagent.put(`${__API_URL__}/profiles/${user}`)
+  return superagent.put(`${__API_URL__}/profiles/${user._id}`)
   .set('Authorization', `Bearer ${token}`)
   .set('Content-Type', 'application/json')
   .send(user)
@@ -33,7 +33,7 @@ export const fetch = (user) => (store) => {
   return superagent.get(`${__API_URL__}/profiles/me`)
   .set('Authorization', `Bearer ${token}`)
   .then(res => {
-    console.log(res.body);
+    console.log('res.body: ', res.body);
     return store.dispatch(set(res.body));
   });
 };

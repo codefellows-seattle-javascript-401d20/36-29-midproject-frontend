@@ -44,13 +44,14 @@ class ProfileForm extends React.Component {
       <form
         className='profile-form'
         onSubmit={this.handleSubmit}>
-
+        <label>First Name</label>
         <textarea
           name='firstName'
           value={this.state.firstName}
           onChange={this.handleChange}
           />
 
+        <label>Last Name</label>
         <textarea
           name='lastName'
           value={this.state.lastName}
