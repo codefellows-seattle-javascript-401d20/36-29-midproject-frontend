@@ -49,7 +49,12 @@ class Profile extends React.Component {
               </div>
             :
               <div>
-                <p> {profile.firstName} {profile.lastName}</p>
+                <p>Name: {profile.firstName} {profile.lastName}</p>
+                <p>City: {profile.city} </p>
+                <p>State: {profile.state} </p>
+                <p>Donation Goal: {profile.donationGoal} </p>
+                <p>Money Spent: {profile.moneySpent} </p>
+                <p>Bio: {profile.bio} </p>
                 <button onClick={() => this.setState({editing: true})}>
                   Edit Profile
                 </button>
