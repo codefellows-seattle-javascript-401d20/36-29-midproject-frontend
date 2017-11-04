@@ -97,15 +97,6 @@ class ProfileForm extends React.Component {
             onChange={this.handleChange}
             />
 
-          <label>city</label>
-          <textarea
-            type='text'
-            name='city'
-            placeholder='city'
-            value={this.state.city}
-            onChange={this.handleChange}
-            />
-
           <label>Donation Goal</label>
           <textarea
             type='number'
