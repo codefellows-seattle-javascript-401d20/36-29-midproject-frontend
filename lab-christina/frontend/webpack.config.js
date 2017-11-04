@@ -1,30 +1,31 @@
-'use strict'
+'use strict';
 
-// load env
-require('dotenv').config()
+require('dotenv').config();
 
-const { DefinePlugin, EnvironmentPlugin } = require('webpack')
-const CleanPlugin = require('clean-webpack-plugin')
-const UglifyPlugin = require('uglifyjs-webpack-plugin')
-const HTMLPlugin = require('html-webpack-plugin')
-const ExtractPlugin = require('extract-text-webpack-plugin')
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
 
-const production = process.env.NODE_ENV === 'production'
+const production = process.env.NODE_ENV === 'production';
 
 let plugins = [
   new HTMLPlugin({title: 'charity-choice'}),
-  new EnvironmentPlugin(['NODE_ENV']),
+  new EnvironmentPlugin({
+    NODE_ENV: 'development',
+  }),
   new ExtractPlugin('bundle.[hash].css'),
   new DefinePlugin({
     __API_URL__: JSON.stringify(process.env.API_URL),
   }),
-]
+];
 
 if(production){
   plugins = plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
-  ])
+  ]);
 }
 
 module.exports = {
@@ -47,7 +48,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: 'image/[name].[hash].[ext]'
+            name: 'image/[name].[hash].[ext]',
           },
         }],
       },
@@ -67,12 +68,12 @@ module.exports = {
               options: {
                 sourceMap: production ? false : true,
                 includePaths: [`${__dirname}/src/style`],
-              }
+              },
             },
           ],
-        })
-      }
+        }),
+      },
 
     ],
   },
-}
+};

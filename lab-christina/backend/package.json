@@ -17,7 +17,7 @@
     "test": "jest -i --coverage",
     "dbonWin": "mkdir -p $HOME/db && mongod --dbpath $HOME/db",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db",
-    "dboff": "killall mongod"
+    "dboff": "sudo service mongodb stop"
   },
   "repository": {
     "type": "git",

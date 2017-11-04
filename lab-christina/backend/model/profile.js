@@ -13,7 +13,7 @@ const profileSchema = mongoose.Schema({
   bio: { type: String },
   location: {
     type: {type: String, default: 'Point'},
-    coordinates: [{type: Number}],
+    coordinates: [{ type: Number }],
   },
   account: { type: mongoose.Schema.Types.ObjectId, required: true, unique: true },
 });

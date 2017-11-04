@@ -15,7 +15,8 @@ document.body.appendChild(container)
 ReactDom.render(
   <Provider store = { store } >
     <App />
-  </Provider>
-  , container )
+  </Provider>,
+container )
 
 console.log('process.env', process.env)
+console.log('__API_URL__', __API_URL__);

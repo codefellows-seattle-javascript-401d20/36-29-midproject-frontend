@@ -5,7 +5,7 @@ export default store => next => action => {
     console.log('__STATE__', store.getState())
     return result
   } catch(error) {
-    console.error(__VALIDATION_ERROR__, error)
+    console.error('__VALIDATION_ERROR__', error)
     action.error = error
     return action
   }
