@@ -6,6 +6,7 @@ import * as favorite from '../../action/favorite.js'
 class Charity extends React.Component {
   constructor(props) {
     super(props)
+    console.log('CHARITY CONSTRUCT!')
 
     this.state = {
       favorite: false,
@@ -22,17 +23,31 @@ class Charity extends React.Component {
 
   handleUnfavorite() {
     console.log('CHECK THIS OUT!', this.props.charity)
-    console.log('DA FAVES', this.props.favorites.data)
+    console.log('DA FAVES', this.props.favorites)
     this.props.favoriteRemove(this.props.favorites.data.find(item => item.charity._id === this.props.charity._id))
       .then(() => this.setState({favorite: false}))
   }
 
-  // componentDidMount(){
-  //   if(this.props.favorites) {
-  //     if(this.props.favorites.data.find(item => item.charity._id === this.props.charity._id))
-  //       this.setState({favorite: true})
-  //   }
-  // }
+  componentWillMount() {
+    if (this.props.favorites) {
+      if(this.props.favorites.data.find(item => item.charity._id === this.props.charity._id))
+        this.setState({favorite: true})
+      else {
+        this.setState({favorite: false})
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('NEXT_PROPS.FAVORITES', nextProps.favorites)
+    if (nextProps.favorites.data) {
+      if(nextProps.favorites.data.find(item => item.charity._id === nextProps.charity._id))
+        this.setState({favorite: true})
+      else {
+        this.setState({favorite: false})
+      }
+    }
+  }
 
   render(){
     let {

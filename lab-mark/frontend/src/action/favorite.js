@@ -10,6 +10,11 @@ export const remove = (favorite) => ({
   payload: favorite,
 })
 
+export const add = (favorite) => ({
+  type: 'FAVORITE_ADD',
+  payload: favorite,
+})
+
 
 export const create = (favorite) => (store) => {
   let {token} = store.getState()
@@ -18,7 +23,9 @@ export const create = (favorite) => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send({charity: favorite})
-    .then(() => fetch())
+    .then(() => {
+      return store.dispatch(add(favorite))
+    })
 }
 
 export const unfavorite = (favorite) => (store) => {
@@ -28,7 +35,7 @@ export const unfavorite = (favorite) => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .then(res => {
-      return store.dispatch(remove(res.body))
+      return store.dispatch(remove(favorite))
     })
 }
 

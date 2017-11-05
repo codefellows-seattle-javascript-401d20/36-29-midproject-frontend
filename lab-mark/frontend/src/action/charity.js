@@ -24,6 +24,7 @@ export const search = (query) => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .query(parsedQuery)
     .then(res => {
+      console.log('RES.BODY', res.body)
       return store.dispatch(set(res.body))
     })
 }
