@@ -28,25 +28,26 @@ module.exports = new Router()
       .catch(next);
   })
   .get('/profiles/me', bearerAuth, (req, res, next) => {
-    // get a token from front-end
-    // locate user based on token
-    // if located
-    // find the user's profile
-    // return the profile as json
-    // else return 404
-    // console.log('req.body: ', req.body);
-    Account.find({tokenSeed: req.account.tokenSeed})
-      .then((account) =>
-      {
-        if(account)
-          Profile.find({account: account._id});})
+    Profile.findOne({account: req.account._id})
       .then(profile => {
         if (!profile)
-          console.log('No profile created yet!');
-        // throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
-        else{res.json(profile);}
+          throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
+        res.json(profile);
       })
       .catch(next);
+    // Account.find({tokenSeed: req.account.tokenSeed})
+    //   .then((account) =>
+    //   {
+    //     console.log('account: ', account);
+    //     if(account)
+    //       Profile.find({account: account._id});})
+    //   .then(profile => {
+    //     if (!profile)
+    //       return next(httpErrors(404, '__REQUEST_ERROR__ profile not found'));
+    //     res.json(profile);
+    //     console.log(profile);
+    //   })
+    //   .catch(next);
   })
   .get('/profiles/:id', bearerAuth, (req, res, next) => {
     Profile.findById(req.params.id)
@@ -65,7 +66,6 @@ module.exports = new Router()
       page = 0;
     page = page < 0 ? 0 : page;
 
-    // Fuzzy Search
     if (req.query.firstName) req.query.firstName = ({$regex: fuzzy(req.query.firstName), $options: 'i'});
     if (req.query.lastName) req.query.lastName = ({$regex: fuzzy(req.query.lastName), $options: 'i'});
     if (req.query.city) req.query.city = ({$regex: fuzzy(req.query.city), $options: 'i'});
@@ -110,21 +110,6 @@ module.exports = new Router()
       })
       .catch(next);
   })
-
-  // .put('/profiles/me', bearerAuth, (req, res, next) => {
-  //   Account.find({tokenSeed: req.account.tokenSeed})
-  //     .then((account) =>
-  //     {
-  //       if(account)
-  //         Profile.findByIdAndUpdate({account: account._id}, req.body, { new: true, runValidators: true });})
-  //     .then(profile => {
-  //       if (!profile)
-  //         // console.log('No profile created yet!');
-  //         throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
-  //       else{res.json(profile);}
-  //     })
-  //     .catch(next);
-  // })
 
   .put('/profiles/:id', bearerAuth, (req, res, next) => {
     if (!req.body.firstName || !req.body.lastName)
