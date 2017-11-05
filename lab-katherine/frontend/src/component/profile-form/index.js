@@ -1,30 +1,30 @@
 import React from 'react';
 import * as util from '../../lib/util.js';
-import validator from 'validator';
 
 let emptyState = {
-  firstName: '',
-  firstNameDirty: false,
+  firstName: 'first name',
+  firstNameDirty: true,
   firstNameError: 'First name is required!',
-  lastName: '',
-  lastNameDirty: false,
+  lastName: 'last name',
+  lastNameDirty: true,
   lastNameError: 'Last name is required!',
-  city: '',
-  cityDirty: false,
+  city: 'city',
+  cityDirty: true,
   cityError: '',
-  state: '',
-  stateDirty: false,
+  state: 'state',
+  stateDirty: true,
   stateError: '',
-  donationGoal: '',
-  donationGoalDirty: false,
+  donationGoal: 1,
+  donationGoalDirty: true,
   donationGoalError: '',
-  moneySpent: '',
-  moneySpentDirty: false,
+  moneySpent: 1,
+  moneySpentDirty: true,
   moneySpentError: '',
-  bio: '',
-  bioDirty: false,
+  bio: 'your bio',
+  bioDirty: true,
   bioError: '',
 }
+
 class ProfileForm extends React.Component {
   constructor(props){
     super(props);
@@ -44,7 +44,7 @@ class ProfileForm extends React.Component {
     this.setState({
       [name]: value,
       [`${name}Dirty`]: true,
-      [`${name}Error`]: value ? null : emptyState.bioError,
+      [`${name}Error`]: value ? null : emptyState[`${name}Error`],
     });
   }
 

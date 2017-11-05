@@ -35,11 +35,9 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <h2> profile </h2>
+        <h2> Profile </h2>
         { profile ?
           <div>
-            <h2> {profile.username} </h2>
-            <h3> {profile.email} </h3>
             { this.state.editing ?
               <div>
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />

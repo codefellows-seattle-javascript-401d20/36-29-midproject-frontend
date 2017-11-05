@@ -15,27 +15,10 @@ class Landing extends React.Component {
   }
 
   handleLogin(user){
+    console.log(user);
     this.props.login(user)
-    .then((user) => {
-      // if(this.props.fetchClientProfile(user)){
-      //   this.props.fetchClientProfile(user);
-      //   this.props.history.push('/dashboard');
-      // }
-      // console.log('user: ', user);
-      // console.log('this.props: ', this.props);
-      // console.log('this.props.fetchClientProfile(user): ', this.props.fetchClientProfile(user));
-      // console.log('typeof this.props.fetchClientProfile(user): ', typeof this.props.fetchClientProfile(user));
-      // console.log('Object.values(this.props.fetchClientProfile(user)): ',
-      // Object.values(this.props.fetchClientProfile(user)));
-      // console.log('Object.values(this.props.fetchClientProfile(user)).length: ',
-      // Object.values(this.props.fetchClientProfile(user)).length);
-      // if(Object.values(this.props.fetchClientProfile(user)).length === 0)
-      //   this.props.history.push('/dashboard');
-      // else {
-      //   this.props.fetchClientProfile(user);
-      //   this.props.history.push('/dashboard');
-      // }
-      this.props.fetchClientProfile(user);
+    .then(() => {
+      this.props.fetchClientProfile();
       this.props.history.push('/dashboard');
     })
     .catch(console.error);
@@ -50,6 +33,7 @@ class Landing extends React.Component {
   }
 
   render(){
+    console.log('this.props: ', this.props);
     let {
       location,
     } = this.props;
