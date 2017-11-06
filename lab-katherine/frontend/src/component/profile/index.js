@@ -47,7 +47,7 @@ class Profile extends React.Component {
           <div>
               <div>
                 <PhotoForm profile={profile} onComplete={this.handleUploadPhoto} />
-                <ProfileForm profile={profile} onComplete={this.props.profileUploadPhoto} />
+                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
                 <button onClick={() => this.setState({editing: false})}>
                   Cancel
                 </button>
@@ -63,9 +63,8 @@ class Profile extends React.Component {
                 <button onClick={() => this.setState({editing: true})}>
                   Edit Profile
                 </button>
-
               </div>
-            
+            }
           </div>
         :
           <ProfileForm onComplete={this.handleCreate} />
@@ -82,7 +81,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
-  profileUploadPhoto: (photo) => dispatch(clientProfile.uploadPhoto(photo)),
+  profileUploadPhoto: (photo) => dispatch(clientPhoto.uploadPhoto(photo)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
