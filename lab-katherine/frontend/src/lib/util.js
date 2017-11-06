@@ -31,3 +31,14 @@ export const cookieFetch = (key) => {
 export const cookieDelete = (key) => {
   document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 };
+
+export const fileToDataURL = (file) => {
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader();
+    reader.addEventListener('load', () => resolve(reader.result));
+    reader.addEventListener('error', reject);
+    if(!file)
+      return reject(new Error('file required'));
+    reader.readAsDataURL(file);
+  });
+};

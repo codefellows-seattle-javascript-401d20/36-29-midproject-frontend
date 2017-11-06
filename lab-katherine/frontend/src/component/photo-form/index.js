@@ -9,9 +9,9 @@ class PhotoForm extends React.Component {
       photo: '',
       photoDirty: false,
       photoError: 'Photo is required.',
-      description: '',
-      descriptionDirty: false,
-      descriptionError: 'Photo is required.',
+      // description: '',
+      // descriptionDirty: false,
+      // descriptionError: 'Photo is required.',
     }
 
     this.state = this.emptyState;
