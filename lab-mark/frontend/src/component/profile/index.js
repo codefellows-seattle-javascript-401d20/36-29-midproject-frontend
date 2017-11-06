@@ -1,3 +1,5 @@
+import './profile.scss'
+
 import React from 'react'
 import {connect} from 'react-redux'
 import ProfileForm from '../profile-form'

@@ -20,7 +20,7 @@ class Favorite extends React.Component {
     return (
       <div className='favorite'>
         <p><strong>Organization:</strong> {favorite.charity.name} </p>
-        <button onClick={this.handleRemove} />
+        <button onClick={this.handleRemove}>Remove</button>
       </div>
     )
   }
