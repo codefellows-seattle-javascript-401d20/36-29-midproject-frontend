@@ -11,6 +11,9 @@ export default (state=null, {type, payload}) => {
   case 'CLIENT_PHOTO_SET':
     validatePhoto(payload);
     return payload;
+  case 'CLIENT_PHOTO_CREATE':
+    validatePhoto(payload);
+    return payload;
   case 'TOKEN_REMOVE':
     return null;
   default:
