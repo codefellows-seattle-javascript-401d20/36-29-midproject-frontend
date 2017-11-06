@@ -47,7 +47,7 @@ class Landing extends React.Component {
       <div>
         <h2> signup </h2>
         <AuthForm onComplete={this.handleSignup} />
-        <p> allready have an account? </p>
+        <p> already have an account? </p>
         <Link to='/login'> login </Link>
       </div>
     )}

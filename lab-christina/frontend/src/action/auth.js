@@ -1,7 +1,6 @@
 import superagent from 'superagent'
 import {cookieDelete} from '../lib/util.js'
 
-//sync
 export const tokenSet = (token) => ({
   type: 'TOKEN_SET',
   payload: token,
@@ -11,14 +10,14 @@ export const tokenRemove = () => ({
   type: 'TOKEN_REMOVE',
 })
 
-//async
 export const signup = (user) => (store) => {
   return superagent.post(`${__API_URL__}/auth`)
   .send(user)
   .withCredentials()
   .then(response => {
+    console.log(response);
     console.log('Signup ::', { response });
-    return store.dispatch(tokenSet(response.body.token))
+    return store.dispatch(tokenSet(response.token))
   })
 }
 
@@ -27,8 +26,9 @@ export const login  = (user) => (store) => {
   .auth(user.username, user.password)
   .withCredentials()
   .then(response => {
-    console.log( 'Login ::', { response });
-    return store.dispatch(tokenSet(response.body.token))
+    console.log('username',user.username)
+    console.log( 'Login ::', response );
+    return store.dispatch(tokenSet(response.token))
   })
 }
 
