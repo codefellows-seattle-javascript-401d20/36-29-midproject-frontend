@@ -1,14 +1,10 @@
-![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) Code-401-Javascript Lab 31-34
+![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) Code-401-Javascript Lab 36-39
 ===
-This is day 31-34 of lab with Code Fellows. The purpose of the lab is to teach students the basics of react as well as modularize each component correctly. Throughout the 4 days, students will learn key skills to develop fluid react apps:
-* Day 1 - Redux
-* Day 2 - Combining reducers
-* Day 3 - Redux middleware
-* Day 4 - Drag and drop
+This is the 36-39 lab for Code Fellows. Students are expected to build a front end for a Charity backend API that was built as a midterm project for the course.
 
-# Budget Tracker App
+# Charity Choice Application
 
-Allows users to create, update and delete categories and expenses to help plan a budget. User can also drag and drop expenses to different categories.
+Allows user build profiles, search for charities, and favorite specific charities.
 
 ### main.js
 
