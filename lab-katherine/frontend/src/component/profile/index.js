@@ -47,7 +47,7 @@ class Profile extends React.Component {
           <div>
               <div>
                 <PhotoForm profile={profile} onComplete={this.handleUploadPhoto} />
-                <ProfileForm profile={profile} onComplete={this.props.profileUploadPhoto} />
+                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
                 <button onClick={() => this.setState({editing: false})}>
                   Cancel
                 </button>
@@ -63,7 +63,6 @@ class Profile extends React.Component {
                 <button onClick={() => this.setState({editing: true})}>
                   Edit Profile
                 </button>
-
               </div>
             }
           </div>

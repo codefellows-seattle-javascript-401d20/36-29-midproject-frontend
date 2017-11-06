@@ -18,18 +18,13 @@ class PhotoForm extends React.Component {
   }
 
   handleValidate({type, value, files}){
-    switch(type){
-      case 'file':
-        if(files.length !== 1)
-          return 'You must only select one file.'
-        let imageType = files[0].type
-        let validImageTypes = ['image/png', 'image/jpeg', 'image/jpg']
-        if(!validImageTypes.includes(imageType))
-          return 'Must be an image of type png or jpeg.'
-        return null
-      default:
-        return null
-    }
+    if(files.length !== 1)
+      return 'You must only select one file.'
+    let imageType = files[0].type
+    let validImageTypes = ['image/png', 'image/jpeg', 'image/jpg']
+    if(!validImageTypes.includes(imageType))
+      return 'Must be an image of type png or jpeg.'
+    return null
   }
 
   handleChange(e){
