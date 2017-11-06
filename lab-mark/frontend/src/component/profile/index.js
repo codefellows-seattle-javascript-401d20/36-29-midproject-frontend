@@ -64,7 +64,6 @@ class Profile extends React.Component {
                 <button onClick={() => this.setState({editing: true})}>
                   Edit Bio
                 </button>
-
               </div>
             }
           </div>

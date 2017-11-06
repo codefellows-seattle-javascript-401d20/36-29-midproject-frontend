@@ -42,6 +42,15 @@ favoriteRouter.get('/favorites', bearerAuth, (req, res, next) => {
     page=0;
   page = page < 0 ? 0 : page;
 
+  let queryArray, trueQuery, stringQuery;
+  if (req.url.split('?')[1]) {
+    queryArray = req.url.split('?')[1].split('&');
+    trueQuery = queryArray.filter(query => query.split('=')[0] !== 'page');
+    stringQuery = trueQuery.join('&') + '&';
+  }
+  else
+    stringQuery = '';
+
   let favoritesCache;
   Favorite.find(req.query)
     .populate('profile')
@@ -59,12 +68,24 @@ favoriteRouter.get('/favorites', bearerAuth, (req, res, next) => {
       };
 
       let lastPage = Math.floor(count / 100);
-      res.links({
-        next: `http://localhost/favorites?page=${page+1}`,
-        prev: `http://localhost/favorites?page=${page < 1 ? 0 : page - 1}`,
-        last: `http://localhost/favorites?page=${lastPage}`,
-      });
+      res.links = {
+        next: `http://${req.headers.host}/favorites?${stringQuery}page=${page === lastPage ? lastPage : page+1}`,
+        prev: `http://${req.headers.host}/favorites?${stringQuery}page=${page < 1 ? 0 : page - 1}`,
+        last: `http://${req.headers.host}/favorites?${stringQuery}page=${lastPage}`,
+      };
       res.json(result);
+    })
+    .catch(next);
+});
+
+favoriteRouter.get('/favorites/:id', bearerAuth, (req, res, next) => {
+  Favorite.findById(req.params.id)
+    .populate('profile')
+    .populate('charity')
+    .then(favorite => {
+      if (!favorite)
+        throw httpErrors(404, '__REQUEST_ERROR__ favorite not found');
+      res.json(favorite);
     })
     .catch(next);
 });
