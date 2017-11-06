@@ -15,7 +15,6 @@ class Landing extends React.Component {
   }
 
   handleLogin(user){
-    console.log(user);
     this.props.login(user)
     .then(() => {
       this.props.fetchClientProfile();
@@ -33,7 +32,6 @@ class Landing extends React.Component {
   }
 
   render(){
-    console.log('this.props: ', this.props);
     let {
       location,
     } = this.props;
@@ -58,7 +56,7 @@ class Landing extends React.Component {
           <div>
             <h2> login </h2>
             <AuthForm type='login' onComplete={this.handleLogin} />
-            <p> dost thou not have an account? </p>
+            <p> No account? Sign up now! </p>
             <Link to='/signup'> signup </Link>
           </div>
         )}

@@ -42,7 +42,7 @@ class AuthForm extends React.Component {
         if(value.length < 8)
           return 'Your name password must be 8 characters.';
         if(!validator.isAlphanumeric(value))
-          return 'Your name password may only contain numbers and letters.';
+          return 'Your name and password may only contain numbers and letters.';
         return null;
       default:
         return null;

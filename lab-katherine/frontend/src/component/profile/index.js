@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
 import * as util from '../../lib/util.js';
 import * as clientProfile from '../../action/client-profile.js';
+import PhotoForm from '../photo-form';
+import * as clientPhoto from '../../action/client-photo.js';
 
 class Profile extends React.Component {
   constructor(props){
@@ -13,6 +15,7 @@ class Profile extends React.Component {
 
     this.handleCreate = this.handleCreate.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleUploadPhoto = this.handleUploadPhoto.bind(this);
   }
 
   handleCreate(profile){
@@ -27,6 +30,10 @@ class Profile extends React.Component {
     this.setState({editing: false});
   }
 
+  handleUploadPhoto(photo){
+    this.props.profileUploadPhoto(photo);
+  }
+
   render(){
     let {
       profile,
@@ -38,9 +45,9 @@ class Profile extends React.Component {
         <h2> Profile </h2>
         { profile ?
           <div>
-            { this.state.editing ?
               <div>
-                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
+                <PhotoForm profile={profile} onComplete={this.handleUploadPhoto} />
+                <ProfileForm profile={profile} onComplete={this.props.profileUploadPhoto} />
                 <button onClick={() => this.setState({editing: false})}>
                   Cancel
                 </button>
@@ -58,7 +65,7 @@ class Profile extends React.Component {
                 </button>
 
               </div>
-            }
+            
           </div>
         :
           <ProfileForm onComplete={this.handleCreate} />
@@ -75,6 +82,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
+  profileUploadPhoto: (photo) => dispatch(clientProfile.uploadPhoto(photo)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
