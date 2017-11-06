@@ -18,7 +18,6 @@ export const add = (favorite) => ({
 
 export const create = (favorite) => (store) => {
   let {token} = store.getState()
-  console.log('SENDING THIS--->', favorite)
   return superagent.post(`${__API_URL__}/favorites`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
@@ -34,7 +33,6 @@ export const create = (favorite) => (store) => {
 
 export const unfavorite = (favorite) => (store) => {
   let {token} = store.getState()
-  console.log('CHECK THIS OUT TOO!', favorite)
   return superagent.delete(`${__API_URL__}/favorites/${favorite._id}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
@@ -48,7 +46,6 @@ export const fetch = () => (store) => {
   return superagent.get(`${__API_URL__}/favorites`)
     .set('Authorization', `Bearer ${token}`)
     .then(res => {
-      console.log('This is what you are setting', res.body)
       return store.dispatch(set(res.body))
     })
 }

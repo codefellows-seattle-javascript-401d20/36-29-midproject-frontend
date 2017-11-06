@@ -16,8 +16,6 @@ const CHARITY_APP_KEY = process.env.CHARITY_APP_KEY;
 const jsonFile = `${__dirname}/asset/charity.json`;
 const loadJsonFile = `mongoimport --host localhost --db dev --collection charities --jsonArray ${jsonFile}`;
 
-console.log('ID', CHARITY_APP_ID, 'key:', CHARITY_APP_KEY);
-
 const states = [
   // 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC',
   // 'FL', 'GA', 'HI', 'ID', 'IL', 'IN',
@@ -27,10 +25,6 @@ const states = [
   'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT',
   'VA', 'WA', 'WV', 'WI', 'WY',
 ];
-
-console.log('Length:', states.length);
-
-console.log(__dirname);
 
 Promise.all(states.map(stateAbbr => {
   return superagent.get(apiURL)

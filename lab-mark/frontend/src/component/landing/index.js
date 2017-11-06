@@ -31,7 +31,6 @@ class Landing extends React.Component {
   }
 
   render(){
-    console.log('PROPS', this.props)
     let {
       location,
     } = this.props

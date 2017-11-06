@@ -15,8 +15,6 @@ export default (state=emptyState, {type, payload}) => {
     case 'FAVORITE_SET':
       return payload
     case 'FAVORITE_REMOVE':
-      console.log('STATE.DATA', state.data)
-      console.log('PAYLOAD', payload)
       state.data = state.data.filter(favorite => favorite._id !== payload._id)
       return state
     case 'FAVORITE_ADD':
