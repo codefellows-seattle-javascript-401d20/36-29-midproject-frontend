@@ -65,7 +65,7 @@ class Profile extends React.Component {
                 </button>
 
               </div>
-            
+            }
           </div>
         :
           <ProfileForm onComplete={this.handleCreate} />

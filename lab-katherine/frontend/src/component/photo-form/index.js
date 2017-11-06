@@ -9,9 +9,6 @@ class PhotoForm extends React.Component {
       photo: '',
       photoDirty: false,
       photoError: 'Photo is required.',
-      // description: '',
-      // descriptionDirty: false,
-      // descriptionError: 'Photo is required.',
     }
 
     this.state = this.emptyState;
@@ -30,10 +27,6 @@ class PhotoForm extends React.Component {
         if(!validImageTypes.includes(imageType))
           return 'Must be an image of type png or jpeg.'
         return null
-      case 'text':
-        if(value.length > 100)
-          return 'You must have less than 100 charicters.'
-        return null
       default:
         return null
     }
@@ -41,26 +34,18 @@ class PhotoForm extends React.Component {
 
   handleChange(e){
     let {type, value, files} = e.target
-    if(type === 'file'){
-      let error = this.handleValidate(e.target)
-      if(!error) {
-        util.fileToDataURL(files[0])
-        .then(preview => this.setState({preview}))
-      }
-
-      console.log('error', error)
-      this.setState({
-        photo: files[0],
-        photoError: error,
-        photoDirty: true,
-      })
-    } else {
-      this.setState({
-        description: value,
-        descriptionError: this.handleValidate(e.target),
-        descriptionDirty: true,
-      })
+    let error = this.handleValidate(e.target)
+    if(!error) {
+      util.fileToDataURL(files[0])
+      .then(preview => this.setState({preview}))
     }
+
+    console.log('error', error)
+    this.setState({
+      photo: files[0],
+      photoError: error,
+      photoDirty: true,
+    })
   }
 
   handleSubmit(e){
@@ -81,15 +66,6 @@ class PhotoForm extends React.Component {
         <input
           type='file'
           name='photo'
-          onChange={this.handleChange}
-          />
-
-        <p> {this.state.descriptionError} </p>
-        <label> Description </label>
-        <input
-          type='text'
-          name='description'
-          value={this.state.description}
           onChange={this.handleChange}
           />
 
