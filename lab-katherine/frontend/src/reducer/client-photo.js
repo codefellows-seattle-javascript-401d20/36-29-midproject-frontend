@@ -6,18 +6,13 @@ export const validatePhoto = (avatar) => {
     throw new Error('photo was not valid');
 };
 
-export default (state=[], {type, payload}) => {
+export default (state=null, {type, payload}) => {
   switch(type){
-  case 'CLIENT_PHOTOS_SET':
-    if(!Array.isArray(payload))
-      throw new Error('clientPhotos mush be an array');
-    payload.forEach(validatePhoto);
-    return payload;
-  case 'CLIENT_PHOTO_CREATE':
+  case 'CLIENT_PHOTO_SET':
     validatePhoto(payload);
-    return [payload, ...state];
+    return payload;
   case 'TOKEN_REMOVE':
-    return [];
+    return null;
   default:
     return state;
   }

@@ -82,7 +82,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
-  profileUploadPhoto: (photo) => dispatch(clientProfile.uploadPhoto(photo)),
+  profileUploadPhoto: (photo) => dispatch(clientPhoto.uploadPhoto(photo)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
