@@ -24,6 +24,7 @@ class Charity extends React.Component {
   handleUnfavorite() {
     console.log('CHECK THIS OUT!', this.props.charity)
     console.log('DA FAVES', this.props.favorites)
+    console.log('THE RESULT', this.props.favorites.data.find(item => item.charity._id === this.props.charity._id))
     this.props.favoriteRemove(this.props.favorites.data.find(item => item.charity._id === this.props.charity._id))
       .then(() => this.setState({favorite: false}))
   }

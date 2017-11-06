@@ -23,8 +23,12 @@ export const create = (favorite) => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send({charity: favorite})
-    .then(() => {
-      return store.dispatch(add(favorite))
+    .then(res => {
+      return superagent.get(`${__API_URL__}/favorites/${res.body._id}`)
+        .set('Authorization', `Bearer ${token}`)
+    })
+    .then(res => {
+      return store.dispatch(add(res.body))
     })
 }
 

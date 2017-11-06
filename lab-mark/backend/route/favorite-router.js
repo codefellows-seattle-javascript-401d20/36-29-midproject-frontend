@@ -78,6 +78,18 @@ favoriteRouter.get('/favorites', bearerAuth, (req, res, next) => {
     .catch(next);
 });
 
+favoriteRouter.get('/favorites/:id', bearerAuth, (req, res, next) => {
+  Favorite.findById(req.params.id)
+    .populate('profile')
+    .populate('charity')
+    .then(favorite => {
+      if (!favorite)
+        throw httpErrors(404, '__REQUEST_ERROR__ favorite not found');
+      res.json(favorite);
+    })
+    .catch(next);
+});
+
 favoriteRouter.delete('/favorites/:id', bearerAuth, (req, res, next) => {
   Favorite.findByIdAndRemove(req.params.id)
     .then(() => res.sendStatus(204))
