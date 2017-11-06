@@ -1,3 +1,5 @@
+import './landing.scss'
+
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -37,7 +39,7 @@ class Landing extends React.Component {
     return (
       <div className='landing'>
         {util.renderIf(location.pathname === '/',
-          <h2> Welcome </h2>
+          <h2 className='welcome'> Welcome </h2>
         )}
 
         {util.renderIf(location.pathname === '/signup',
@@ -51,9 +53,9 @@ class Landing extends React.Component {
 
         {util.renderIf(location.pathname === '/login',
           <div>
-            <h2> login </h2>
+            <h2> Login </h2>
             <AuthForm type='login' onComplete={this.handleLogin} />
-            <p> Dont have an account ? </p>
+            <p> Dont have an account? </p>
             <Link to='/signup'> Signup </Link>
           </div>
         )}

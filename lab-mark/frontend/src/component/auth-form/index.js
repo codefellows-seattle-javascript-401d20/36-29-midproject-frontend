@@ -1,3 +1,5 @@
+import './authform.scss'
+
 import React from 'react'
 import * as util from '../../lib/util.js'
 

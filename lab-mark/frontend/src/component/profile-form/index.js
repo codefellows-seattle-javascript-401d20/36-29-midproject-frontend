@@ -1,3 +1,5 @@
+import './profile-form.scss'
+
 import React from 'react'
 
 let emptyState = {
@@ -108,7 +110,7 @@ class ProfileForm extends React.Component {
           onChange={this.handleChange}
         />
 
-        <button type='submit'> {this.props.profile ? 'update' : 'create'} profile </button>
+        <button type='submit'> {this.props.profile ? 'Update' : 'Create'} profile </button>
       </form>
     )
   }
