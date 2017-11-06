@@ -2,6 +2,15 @@ import React from 'react'
 import * as util from '../../lib/util.js'
 
 class Favorite extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  handleRemove() {
+    this.props.removeFavorite(this.props.favorite)
+  }
 
   render(){
     let {
@@ -11,6 +20,7 @@ class Favorite extends React.Component {
     return (
       <div className='favorite'>
         <p><strong>Organization:</strong> {favorite.charity.name} </p>
+        <button onClick={this.handleRemove} />
       </div>
     )
   }

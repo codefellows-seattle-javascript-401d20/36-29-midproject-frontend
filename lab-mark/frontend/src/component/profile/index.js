@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ProfileForm from '../profile-form'
 import PhotoForm from '../photo-form'
+import Favorite from '../favorite'
+import * as favorite from '../../action/favorite.js'
 import * as util from '../../lib/util.js'
 import * as clientProfile from '../../action/client-profile.js'
 
@@ -15,6 +17,12 @@ class Profile extends React.Component {
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
+    this.handleUnfavorite = this.handleUnfavorite.bind(this)
+  }
+
+  handleUnfavorite(favorite) {
+    this.props.favoriteRemove(this.props.favorites.data.find(item => item._id === favorite._id))
+      .then(() => this.forceUpdate())
   }
 
   handleCreate(profile){
@@ -37,6 +45,7 @@ class Profile extends React.Component {
     let {
       profile,
       profileCreate,
+      favorites,
     } = this.props
 
     return (
@@ -66,6 +75,14 @@ class Profile extends React.Component {
                 </button>
               </div>
             }
+            <h2> Favorite Charities </h2>
+            {favorites.data.map((favorite, i) =>
+              <Favorite
+                favorite={favorite}
+                key={i}
+                removeFavorite={this.handleUnfavorite}
+              />
+            )}
           </div>
           :
           <ProfileForm onComplete={this.handleCreate} />
@@ -77,12 +94,14 @@ class Profile extends React.Component {
 
 const mapStateToProps = (state) => ({
   profile: state.clientProfile,
+  favorites: state.favorites,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
   profileUploadPhoto: (photo) => dispatch(clientProfile.upload(photo)),
+  favoriteRemove: (charity) => dispatch(favorite.unfavorite(charity)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
