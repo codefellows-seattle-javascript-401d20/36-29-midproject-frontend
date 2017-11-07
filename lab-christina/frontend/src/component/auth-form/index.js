@@ -3,6 +3,20 @@ import * as util from '../../lib/util.js'
 import validator from 'validator'
 
 let emptyState = {
+  firstName: '',
+  firstNameDirty: false,
+  firstNameError: 'First name is required',
+  lastName: '',
+  lastNameDirty: false,
+  lastNameError: 'Last name is required',
+  city: '',
+  cityDirty: false,
+  state: '',
+  stateDirty: false,
+  donationGoal: '',
+  donationGoalDirty: false,
+  moneySpent: '',
+  moneySpentDirty: false,
   username: '',
   usernameDirty: false,
   usernameError: 'username is required',
@@ -28,7 +42,15 @@ class AuthForm extends React.Component {
     if(this.props.type === 'login')
       return null
     switch (name) {
-      case 'username':
+      case 'firstName':
+        if(!validator.isEmail(value))
+          return 'You must provide a first name'
+        break;
+        case 'LastName':
+          if(!validator.isEmail(value))
+            return 'You must provide a flast name'
+          break;
+      case 'username':////RESTART HERE///////
         if(value.length < 6)
           return 'Your username must be 6 characters'
         if(!validator.isAlphanumeric(value))

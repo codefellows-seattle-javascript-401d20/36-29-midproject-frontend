@@ -34,18 +34,15 @@ class Landing extends React.Component {
     return (
       <div className='landing'>
       {util.renderIf(location.pathname === '/',
-      <div>
-        <h2> welcome </h2>
+      <div className='paragraphDiv'>
 
-        <Link to='/signup'> signup </Link>
-        <Link to='/login'> login </Link>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
 
       </div>
     )}
 
     {util.renderIf(location.pathname === '/signup',
       <div>
-        <h2> signup </h2>
         <AuthForm onComplete={this.handleSignup} />
         <p> already have an account? </p>
         <Link to='/login'> login </Link>
@@ -54,7 +51,6 @@ class Landing extends React.Component {
 
     {util.renderIf(location.pathname === '/login',
     <div>
-      <h2> login </h2>
       <AuthForm type='login' onComplete={this.handleLogin} />
       <p> dont have an account ? </p>
       <Link to='/signup'> signup </Link>

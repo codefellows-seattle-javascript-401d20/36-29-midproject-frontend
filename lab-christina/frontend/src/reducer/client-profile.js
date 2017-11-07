@@ -1,6 +1,8 @@
 export const validateProfile = (profile) => {
-  let { username, email, password, bio, owner } = profile
-  if(!username || !email || !password || !bio || !owner)
+  if(!Profile)
+    throw new Error('Profile Required!')
+  let { firstName, lastName } = profile
+  if(!firstName || !lastName)
     throw new Error('__VALIDATION_ERROR__ invalid profile');
 }
 

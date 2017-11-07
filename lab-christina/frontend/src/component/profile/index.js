@@ -6,19 +6,20 @@ import * as clientProfile from '../../action/client-profile.js'
 
 class Profile extends React.Component {
   render(){
-    let { profile, profileCreate } = this.props
+    let { profile, profileCreate, profileUpdate } = this.props
     return(
       <div>
-        <h2> profile </h2>
-        { profile ?
-          <div>
-            <h2> { profile.username } </h2>
-            <h2> { profile.email } </h2>
-            <p> { profile.bio } </p>
-          </div>
-        : undefined }
-        )}
-        <ProfileForm onComplete={ this.props.profileCreate } />
+      <h2> profile </h2>
+      { profile ?
+        <div>
+        <h2> { profile.username } </h2>
+        <h2> { profile.email } </h2>
+        <p> { profile.bio } </p>
+        <ProfileForm profile={ profile } onComplete={ profileUpdate } />
+        </div>
+        :
+        <ProfileForm onComplete={ profileCreate } />
+      }
       </div>
     )
   }
@@ -29,6 +30,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  profileCreate: (profile) => dispatch(clientProfile.create(profile))
+  profileCreate: (profile) => dispatch(clientProfile.create(profile)),
+  profileUpdate: (profile) => dispatch(clientProfile.create(profile)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

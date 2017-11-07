@@ -8,9 +8,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className='header'>
-        <h1> Charity Choice </h1>
         <nav>
-
           {util.renderIf(!this.props.loggedIn,
             <ul>
             <li> <Link to='/'> Home </Link> </li>
@@ -19,17 +17,21 @@ class Header extends React.Component {
             </ul>
           )}
 
+
           {util.renderIf(this.props.loggedIn,
             <ul>
-              <li> <Link to='/dashboard'> Dashboard </Link> </li>
               <li> <Link to='/profile'> Profile </Link> </li>
               <li> <Link to='/upload'> Upload </Link> </li>
+              <li> <Link to='/dashboard'> Dashboard </Link> </li>
             </ul>
           )}
+
+        <h1 className='mainHead'> Charity Choice </h1>
 
         </nav>
         {util.renderIf(this.props.loggedIn,
           <button onClick={ this.props.logout }> Logout </button>)}
+
       </header>
     )
   }

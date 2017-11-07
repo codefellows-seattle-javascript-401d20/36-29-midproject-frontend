@@ -30,4 +30,7 @@ export const update = (user) => (store) => {
   return superagent.put(`${__API_URL__}/profiles/${user._id}`)
   .set('Authorization', `Bearer${ token }`)
   .set('Content-Type', 'application/json')
+  .then(response => {
+    return store.dispatch(set(response.body))
+  })
 }

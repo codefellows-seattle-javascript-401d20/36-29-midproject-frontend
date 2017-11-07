@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './style/main.scss'
 import ReactDom from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'

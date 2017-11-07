@@ -1,21 +1,29 @@
 import React from 'react'
 
+let emptyState = {
+  bio: '',
+  bioDirty: false,
+  bioError: 'Bio is required',
+}
+
 class ProfileForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state = {
-      bio: '',
-      bioDirty: false,
-      bioError: 'Bio is required',
-    }
+    this.state = props.profile ? {...emptyState, ...props.profile} : emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     // this.validateChange = this.validateChange.bind(this)
   }
 
+  componentWillReceiveProps(props) {
+    if(props.profile)
+      this.setState(props.profile)
+  }
+
   handleChange(event) {
     let { value } = event.target
     this.setState({
+      bio: value,
       bioDirty: true,
       bioError: value ? null : emptyState.bioError,
     })
