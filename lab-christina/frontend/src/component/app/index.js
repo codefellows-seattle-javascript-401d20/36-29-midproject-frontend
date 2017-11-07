@@ -1,4 +1,5 @@
 import React from 'react'
+// import './style/main.scss'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Landing from '../landing'

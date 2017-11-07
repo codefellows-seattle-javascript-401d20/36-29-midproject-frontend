@@ -17,7 +17,7 @@ export const signup = (user) => (store) => {
   .then(response => {
     console.log(response);
     console.log('Signup ::', { response });
-    return store.dispatch(tokenSet(response.token))
+    return store.dispatch(tokenSet(response.body.token))
   })
 }
 
@@ -28,7 +28,7 @@ export const login  = (user) => (store) => {
   .then(response => {
     console.log('username',user.username)
     console.log( 'Login ::', response );
-    return store.dispatch(tokenSet(response.token))
+    return store.dispatch(tokenSet(response.body.token))
   })
 }
 
