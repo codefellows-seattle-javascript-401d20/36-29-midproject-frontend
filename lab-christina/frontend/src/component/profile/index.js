@@ -12,8 +12,11 @@ class Profile extends React.Component {
       <h2> profile </h2>
       { profile ?
         <div>
-        <h2> { profile.username } </h2>
-        <h2> { profile.email } </h2>
+        <h1><strong> { profile.firstName } { profile.lastName } </strong></h1>
+        <h2> { profile.city }, { profile.state } </h2>
+        <h3><strong>  Contact { profile.name } </strong></h3>
+        <p> { profile.username } </p>
+        <p> { profile.email } </p>
         <p> { profile.bio } </p>
         <ProfileForm profile={ profile } onComplete={ profileUpdate } />
         </div>

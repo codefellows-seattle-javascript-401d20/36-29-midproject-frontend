@@ -43,14 +43,14 @@ class AuthForm extends React.Component {
       return null
     switch (name) {
       case 'firstName':
-        if(!validator.isEmail(value))
+        if(!validator.isAlpha(value))
           return 'You must provide a first name'
         break;
         case 'LastName':
-          if(!validator.isEmail(value))
+          if(!validator.isAplha(value))
             return 'You must provide a flast name'
           break;
-      case 'username':////RESTART HERE///////
+      case 'username':
         if(value.length < 6)
           return 'Your username must be 6 characters'
         if(!validator.isAlphanumeric(value))
@@ -111,6 +111,24 @@ class AuthForm extends React.Component {
 
         {util.renderIf(this.state.usernameDirty,
         <p> { this.state.usernameError } </p>)}
+
+        <input
+          className = {util.renderIf(this.state.firstNameDirty && this.state.firstNameError, 'invalid')}
+          name='firstName'
+          placeholder='First Name'
+          type='text'
+          value={ this.state.firstName }
+          onChange={ this.handleChange }
+          />
+
+          <input
+            className = {util.renderIf(this.state.lastNameDirty && this.state.lastNameError, 'invalid')}
+            name='lastName'
+            placeholder='Last Name'
+            type='text'
+            value={ this.state.lastName }
+            onChange={ this.handleChange }
+            />
 
         <input
           className = {util.renderIf(this.state.usernameDirty && this.state.usernameError, 'invalid')}

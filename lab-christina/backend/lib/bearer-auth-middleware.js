@@ -27,6 +27,8 @@ module.exports = (req, res, next) => {
       return Account.findOne({tokenSeed: decrypted.tokenSeed});
     })
     .then(account => {
+      if(!account)
+        throw httpErrors(401, 'user does not exhist');
       req.account = account;
       next();
     })
