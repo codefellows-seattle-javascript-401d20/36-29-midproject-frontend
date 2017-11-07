@@ -5,8 +5,8 @@
   border: 2px solid black;
   padding: $pad;
   position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
+  height: 100%;
+  overflow: scroll;
 
   h2 {
     font-family: $font-rubik;
