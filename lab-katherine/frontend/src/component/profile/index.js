@@ -54,6 +54,7 @@ class Profile extends React.Component {
               </div>
             :
               <div>
+                <img src={profile.photo} style={{width: '200px'}} alt='profile photo' />
                 <p>Name: {profile.firstName} {profile.lastName}</p>
                 <p>City: {profile.city} </p>
                 <p>State: {profile.state} </p>
