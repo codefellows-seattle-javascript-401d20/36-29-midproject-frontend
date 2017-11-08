@@ -30,24 +30,9 @@ module.exports = new Router()
   .get('/profiles/me', bearerAuth, (req, res, next) => {
     Profile.findOne({account: req.account._id})
       .then(profile => {
-        if (!profile)
-          throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
         res.json(profile);
       })
       .catch(next);
-    // Account.find({tokenSeed: req.account.tokenSeed})
-    //   .then((account) =>
-    //   {
-    //     console.log('account: ', account);
-    //     if(account)
-    //       Profile.find({account: account._id});})
-    //   .then(profile => {
-    //     if (!profile)
-    //       return next(httpErrors(404, '__REQUEST_ERROR__ profile not found'));
-    //     res.json(profile);
-    //     console.log(profile);
-    //   })
-    //   .catch(next);
   })
   .get('/profiles/:id', bearerAuth, (req, res, next) => {
     Profile.findById(req.params.id)
