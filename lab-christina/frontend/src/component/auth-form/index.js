@@ -112,15 +112,18 @@ class AuthForm extends React.Component {
         {util.renderIf(this.state.usernameDirty,
         <p> { this.state.usernameError } </p>)}
 
-        <input
-          className = {util.renderIf(this.state.firstNameDirty && this.state.firstNameError, 'invalid')}
-          name='firstName'
-          placeholder='First Name'
-          type='text'
-          value={ this.state.firstName }
-          onChange={ this.handleChange }
+        {util.renderIf(type !== 'login',
+          <input
+            className = {util.renderIf(this.state.firstNameDirty && this.state.firstNameError, 'invalid')}
+            name='firstName'
+            placeholder='First Name'
+            type='text'
+            value={ this.state.firstName }
+            onChange={ this.handleChange }
           />
+        )}
 
+        {util.renderIf(type !== 'login',
           <input
             className = {util.renderIf(this.state.lastNameDirty && this.state.lastNameError, 'invalid')}
             name='lastName'
@@ -128,7 +131,19 @@ class AuthForm extends React.Component {
             type='text'
             value={ this.state.lastName }
             onChange={ this.handleChange }
+          />
+        )}
+
+        {util.renderIf(type !== 'login',
+          <input
+            className = {util.renderIf(this.state.cityDirty && this.state.cityError, 'invalid')}
+            name='city'
+            placeholder='city'
+            type='text'
+            value={ this.state.city }
+            onChange={ this.handleChange }
             />
+          )}
 
         <input
           className = {util.renderIf(this.state.usernameDirty && this.state.usernameError, 'invalid')}
