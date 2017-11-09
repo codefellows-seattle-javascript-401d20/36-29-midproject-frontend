@@ -28,10 +28,46 @@ class Profile extends React.Component {
   }
 
   render() {
-    let {
-      profile, profileCreate } = this.props
+    let { profile, profileCreate } = this.props
     // TODO: write the return 
 
-  }
+    return (
+      <div id='profile'>
+        <h2> profile </h2>
+        {profile ?
+          <div>
+            <h2> {profile.username} </h2>
+            <h3> {profile.email} </h3>
+            {this.state.editing ?
+              <div>
+                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
+                <button onClick={() => this.setState({ editing: false })}>
+                  Cancel
+                </button>
+              </div>
+              : // OR
+              <div>
+                <p> {profile.bio} </p>
+                <button onClick={() => this.setState({ editing: true })}>
+                  Edit Bio
+                </button>
 
+              </div>
+            }
+          </div>
+          : // OR
+          <ProfileForm onComplete={this.handleCreate} />
+        }
+      </div>
+    )
+  }
 }
+
+const mapStateToProps = (state) => ({ profile: state.clientProfile })
+
+const mapDispatchToProps = (dispatch) => ({
+  profileCreate: (profile) => dispatch(clientProfile.create(profile)),
+  profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

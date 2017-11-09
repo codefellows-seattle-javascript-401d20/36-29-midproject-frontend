@@ -34,6 +34,15 @@ module.exports = new Router()
       })
       .catch(next);
   })
+  .get('/profiles/me', bearerAuth, (req, res, next) => {
+    Profile.findOne({ account: req.account._id })
+      .then(profile => {
+        if (!profile)
+          throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
+        res.json(profile);
+      })
+      .catch(next);
+  })
   .get('/profiles', bearerAuth, (req, res, next) => {
     let { page = '0' } = req.query;
     delete req.query.page;
@@ -43,10 +52,10 @@ module.exports = new Router()
     page = page < 0 ? 0 : page;
 
     // Fuzzy Search
-    if (req.query.firstName) req.query.firstName = ({$regex: fuzzy(req.query.firstName), $options: 'i'});
-    if (req.query.lastName) req.query.lastName = ({$regex: fuzzy(req.query.lastName), $options: 'i'});
-    if (req.query.city) req.query.city = ({$regex: fuzzy(req.query.city), $options: 'i'});
-    if (req.query.state) req.query.state = ({$regex: fuzzy(req.query.state), $options: 'i'});
+    if (req.query.firstName) req.query.firstName = ({ $regex: fuzzy(req.query.firstName), $options: 'i' });
+    if (req.query.lastName) req.query.lastName = ({ $regex: fuzzy(req.query.lastName), $options: 'i' });
+    if (req.query.city) req.query.city = ({ $regex: fuzzy(req.query.city), $options: 'i' });
+    if (req.query.state) req.query.state = ({ $regex: fuzzy(req.query.state), $options: 'i' });
 
     let profilesCache;
     Profile.find(req.query)
@@ -72,7 +81,6 @@ module.exports = new Router()
       })
       .catch(next);
   })
-
   .put('/profiles/avatar', bearerAuth, upload.any(), (req, res, next) => {
     let file = req.files[0];
     let key = `${file.filename}.${file.originalname}`;
@@ -87,7 +95,6 @@ module.exports = new Router()
       })
       .catch(next);
   })
-
   .put('/profiles/:id', bearerAuth, (req, res, next) => {
     if (!req.body.firstName || !req.body.lastName)
       return next(httpErrors(400, 'first name and last name required'));

@@ -16,5 +16,5 @@ document.body.appendChild(container)
 ReactDOM.render(
   <Provider store={store} >
     <App />
-  </Provider>
-  , container)
+  </Provider>,
+  container)

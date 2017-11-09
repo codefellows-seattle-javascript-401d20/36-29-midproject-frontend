@@ -1,4 +1,5 @@
 import React from 'react'
+//import SmartForm from '../smart-form'
 
 class Dashboard extends React.Component {
   render() {
