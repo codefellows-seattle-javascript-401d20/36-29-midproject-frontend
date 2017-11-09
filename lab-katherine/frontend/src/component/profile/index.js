@@ -31,6 +31,7 @@ class Profile extends React.Component {
   }
 
   handleUploadPhoto(photo){
+    console.log('photo: ', photo);
     this.props.profileUploadPhoto(photo);
   }
 
@@ -45,7 +46,8 @@ class Profile extends React.Component {
         <h2> Profile </h2>
         { profile ?
           <div>
-              { this.state.editing ? 
+              <img src={profile.photo} style={{width: '200px'}} alt='profile photo' />
+              { this.state.editing ?
               <div>
                 <PhotoForm profile={profile} onComplete={this.handleUploadPhoto} />
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />
@@ -55,7 +57,6 @@ class Profile extends React.Component {
               </div>
             :
               <div>
-                <img src={profile.photo} style={{width: '200px'}} alt='profile photo' />
                 <p>Name: {profile.firstName} {profile.lastName}</p>
                 <p>City: {profile.city} </p>
                 <p>State: {profile.state} </p>

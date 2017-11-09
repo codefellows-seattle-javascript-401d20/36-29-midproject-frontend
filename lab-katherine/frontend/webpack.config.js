@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 require('dotenv').config();
 
@@ -41,7 +41,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jpg|gif|png)$/,
+        test: /\.(woff|woff2|ttf|eot).*/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: 'font/[name].[hash].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|gif|png|svg)$/,
+        exclude: /\.icon\.svg$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -49,6 +62,10 @@ module.exports = {
             name: 'image/[name].[hash].[ext]',
           },
         }],
+      },
+      {
+        test: /\.icon\.svg$/,
+        loader: 'raw-loader',
       },
       {
         test: /\.js$/,
@@ -71,7 +88,6 @@ module.exports = {
           ],
         }),
       },
-
     ],
   },
 };
