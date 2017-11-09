@@ -45,6 +45,7 @@ class Profile extends React.Component {
         <h2> Profile </h2>
         { profile ?
           <div>
+              { this.state.editing ? 
               <div>
                 <PhotoForm profile={profile} onComplete={this.handleUploadPhoto} />
                 <ProfileForm profile={profile} onComplete={this.handleUpdate} />
