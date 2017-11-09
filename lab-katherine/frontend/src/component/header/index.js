@@ -1,3 +1,4 @@
+import './_header.scss'
 import React from 'react';
 import * as auth from '../../action/auth.js';
 import * as util from '../../lib/util.js';

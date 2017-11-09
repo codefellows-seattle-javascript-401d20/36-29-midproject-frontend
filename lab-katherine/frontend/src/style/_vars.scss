@@ -1,16 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+// @import '../../node_modules/font-awesome-sass/assets/stylesheets/_font-awesome.scss';
 
-$color-red: #f42;
-$color-pink: #ff7a7a;
-$color-blue: #77affa;
-
-$color-black: #000;
-$color-darkgrey: #26262b;
-$color-grey: #47474b;
-$color-lightgrey: #abc;
+$color-primary: #7abdff;
+$color-black: #00000b;
 $color-white: #fff;
+$color-lightgrey: #aaaaab;
+$color-grey: #44444b;
+$color-darkgrey: #22222b;
 
-$pad: 0.5em;
+$pad: 0.8em;
 
-$font-main: 'Lato', sans-serif;
-$font-mono: 'Roboto Mono', monospace;
+$font-primary: 'Lato', sans-serif;
