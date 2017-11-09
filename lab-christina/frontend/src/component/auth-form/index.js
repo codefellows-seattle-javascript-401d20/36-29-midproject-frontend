@@ -106,7 +106,7 @@ class AuthForm extends React.Component {
     return (
       <form
         className='auth-form'
-        noValidate
+        novalidate
         onSubmit={ this.handleSubmit } >
 
         {util.renderIf(this.state.usernameDirty,
@@ -180,7 +180,7 @@ class AuthForm extends React.Component {
           onChange={this.handleChange}
           />
 
-        <button type='submit'>{type}</button>
+        <button type='submit'> { type } </button>
       </form>
     )
   }

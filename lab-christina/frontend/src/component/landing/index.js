@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import AuthForm from '../auth-form'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import './_landing.scss'
 
 class Landing extends React.Component {
   constructor(props){
@@ -34,9 +35,14 @@ class Landing extends React.Component {
     return (
       <div className='landing'>
       {util.renderIf(location.pathname === '/',
-      <div className='paragraphDiv'>
+      <div className='landingPara'>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+        <h3> Our Mission </h3>
+          <p className='landingParaOne'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+        <h3> Community </h3>
+          <p className='landingParaTwo'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+        <h3> Contributions </h3>
+          <p className='landingParaThree'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
 
       </div>
     )}

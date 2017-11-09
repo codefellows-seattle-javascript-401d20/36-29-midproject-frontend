@@ -3,6 +3,7 @@ import * as auth from '../../action/auth.js'
 import * as util from '../../lib/util.js'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import './_header.scss'
 
 class Header extends React.Component {
   render() {
