@@ -38,10 +38,8 @@ class Landing extends React.Component {
       <div className='landing'>
         {util.renderIf(location.pathname === '/',
           <div>
-            <h2>Welcome</h2>
-            <Link to='/signup'>signup</Link>
-            <br />
-            <Link to='/login'>login</Link>
+            <h2>Welcome to Charity Choice</h2>
+            <p>Your one stop shop to donating in the US</p>
           </div>
         )}
 

@@ -16,7 +16,6 @@ class AuthRedirect extends React.Component {
           pathTo = '/'
       }
     }
-    console.log('Path To', pathTo)
     return (
       <div className='auth-redirect'>
         {pathTo ? <Redirect to={pathTo} /> : undefined}
