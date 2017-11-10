@@ -37,6 +37,7 @@ module.exports = new Router()
   .get('/profiles/me', bearerAuth, (req, res, next) => {
     Profile.findOne({ account: req.account._id })
       .then(profile => {
+        console.log('--> PROFILE:BACKEND', {profile});
         if (!profile)
           throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
         res.json(profile);
