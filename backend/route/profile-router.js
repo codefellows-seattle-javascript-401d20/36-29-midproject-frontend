@@ -25,6 +25,19 @@ module.exports = new Router()
       })
       .catch(next);
   })
+
+  .get('/profiles/me', bearerAuth, (req, res, next) => {
+    Profile.findOne({ account: req.account._id })
+      .then(profile => {
+        console.log('--> PROFILE:BACKEND', profile);
+        if (!profile)
+          throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
+        res.json(profile);
+      })
+      .catch(next);
+  })
+
+
   .get('/profiles/:id', bearerAuth, (req, res, next) => {
     Profile.findById(req.params.id)
       .then(profile => {
@@ -34,16 +47,8 @@ module.exports = new Router()
       })
       .catch(next);
   })
-  .get('/profiles/me', bearerAuth, (req, res, next) => {
-    Profile.findOne({ account: req.account._id })
-      .then(profile => {
-        console.log('--> PROFILE:BACKEND', {profile});
-        if (!profile)
-          throw httpErrors(404, '__REQUEST_ERROR__ profile not found');
-        res.json(profile);
-      })
-      .catch(next);
-  })
+
+
   .get('/profiles', bearerAuth, (req, res, next) => {
     let { page = '0' } = req.query;
     delete req.query.page;
