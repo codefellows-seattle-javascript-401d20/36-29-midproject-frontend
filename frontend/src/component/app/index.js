@@ -17,12 +17,13 @@ class App extends React.Component {
         .catch(console.error)
     }
   }
-  
+
   render() {
     return (
       <div className='app' >
         <BrowserRouter>
           <div>
+            <Header />
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/login' component={Landing} />

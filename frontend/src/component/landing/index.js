@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import AutoForm from '../auth-form'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import * as clientProfile from '../../action/client-profile'
 
 class Landing extends React.Component {
   constructor(props) {

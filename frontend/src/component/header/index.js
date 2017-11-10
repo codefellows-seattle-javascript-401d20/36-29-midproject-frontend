@@ -22,7 +22,7 @@ class Header extends React.Component {
             <ul>
               <li> <Link to='/dashboard'>dashboard</Link> </li>
               <li> <Link to='/search'>search</Link> </li>
-              <li> <Link to='/upload'>upload</Link> </li>
+              {/* <li> <Link to='/upload'>upload</Link> </li> */}
               <li> <Link to='/profile'>profile</Link> </li>
             </ul>
           )}
@@ -35,6 +35,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({ loggedIn: !!state.token })
+
 const mapDispatchToProps = dispatch =>
   ({ logout: () => dispatch.auth.logout() })
 
