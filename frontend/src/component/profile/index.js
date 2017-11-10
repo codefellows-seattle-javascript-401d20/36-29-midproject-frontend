@@ -10,9 +10,12 @@ class Profile extends React.Component {
     this.state = {
       editing: false,
     }
-
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+  }
+  
+  componentDidMount() {
+    this.props.fetchClientProfile()
   }
 
   handleCreate(profile) {
@@ -33,7 +36,8 @@ class Profile extends React.Component {
 
     return (
       <div id='profile'>
-        <h2> profile </h2>
+        {console.log('--->>>THIS PROPS', this.props)}
+        <h2> profile {console.log('---> ConsoleLog', profile)} </h2>
         {profile ?
           <div>
             <h2> {profile.username} </h2>
@@ -47,6 +51,8 @@ class Profile extends React.Component {
               </div>
               : // OR
               <div>
+                <p>hello World</p>
+
                 <p> {profile.bio} </p>
                 <button onClick={() => this.setState({ editing: true })}>
                   Edit Bio
@@ -66,6 +72,7 @@ class Profile extends React.Component {
 const mapStateToProps = (state) => ({ profile: state.clientProfile })
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchClientProfile: () => dispatch(clientProfile.fetch()),
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
 })
