@@ -22,7 +22,8 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(e) {
-    let { name, value } = e.target
+    let { name, value, type } = e.target
+    value = type === 'number' ? Number(value) : value
     this.setState({
       [name]: value,
       bioDirty: true,
@@ -57,12 +58,36 @@ class ProfileForm extends React.Component {
           onChange={this.handleChange}
         />
 
+        <input
+          type='text'
+          name='city'
+          placeholder='City'
+          value={this.state.city}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='text'
+          name='state'
+          placeholder='State'
+          value={this.state.state}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='number'
+          name='donationGoal'
+          placeholder='Donation Goal'
+          value={this.state.donationGoal}
+          onChange={this.handleChange}
+        />
 
         <textarea
           name='bio'
           value={this.state.bio}
           onChange={this.handleChange}
         />
+
         <button type='submit' >
           {this.props.profile ? 'update' : 'create'} profile
         </button>

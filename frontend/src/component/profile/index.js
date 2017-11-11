@@ -38,10 +38,8 @@ class Profile extends React.Component {
 
     console.log('--->> PROFILE:', profile)
     return (
-
-
       <div id='profile'>
-        {console.log('--->>>THIS PROPS', this.props)}
+
         <h2> profile {console.log('---> ConsoleLog', profile)} </h2>
         {profile ?
           <div>
@@ -56,9 +54,18 @@ class Profile extends React.Component {
               </div>
               : // OR
               <div>
+                <p>Welcome, {profile.firstName}!</p>
+                <p>to edit your profile click the edit button</p>
 
-                <p>{this.props.profile.firstName}</p>
-                <p> {profile.bio} </p>
+                <p> {profile.photo}</p>
+                <p> First name: {profile.firstName}</p>
+                <p> Last Name {profile.lastName}</p>
+                <p> City:  {profile.city}</p>
+                <p> State: {profile.state}</p>
+                <p> Donation goal: {profile.donationGoal}</p>
+                <p> Money spent {profile.moneySpent}</p>
+                <p> Bio: {profile.bio}</p>
+
                 <button onClick={() => this.setState({ editing: true })}>
                   Edit Bio
                 </button>
