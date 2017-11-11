@@ -7,18 +7,17 @@ class AuthRedirect extends React.Component {
   render() {
     let { location, history, token } = this.props
     let { pathname } = location
-    let pathTo = null
+    let to = null
     if (pathname === '/login' || pathname === '/signup' || pathname === '/') {
       if (token)
-        pathTo = '/profile'
-      else {
-        if (!token)
-          pathTo = '/'
-      }
+        to = '/dashboard'
+    } else {
+      if (!token)
+        to = '/' 
     }
     return (
       <div className='auth-redirect'>
-        {pathTo ? <Redirect to={pathTo} /> : undefined}
+        {to ? <Redirect to={to} /> : undefined}
       </div>
     )
   }

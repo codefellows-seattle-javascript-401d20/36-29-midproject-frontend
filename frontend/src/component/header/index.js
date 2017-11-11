@@ -9,6 +9,8 @@ class Header extends React.Component {
     return (
       <header>
         <h1>Charity Choice</h1>
+
+        {console.log('--> LOGGED IN', this.props.loggedIn)}
         <nav>
           {util.renderIf(!this.props.loggedIn,
             <ul>
@@ -36,7 +38,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({ loggedIn: !!state.token })
 
-const mapDispatchToProps = dispatch =>
-  ({ logout: () => dispatch.auth.logout() })
+const mapDispatchToProps = (dispatch) =>
+  ({ logout: () => dispatch(auth.logout()) })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

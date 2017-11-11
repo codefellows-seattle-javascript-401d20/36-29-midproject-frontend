@@ -2,6 +2,8 @@ import React from 'react'
 
 let emptyState = {
   bio: '',
+  firstName: '',
+  lastName: '',
   bioDirty: false,
   bioError: 'Bio required',
 }
@@ -20,9 +22,9 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(e) {
-    let { value } = e.target
+    let { name, value } = e.target
     this.setState({
-      bio: value,
+      [name]: value,
       bioDirty: true,
       bioError: value ? null : emptyState.bioError,
     })
@@ -38,6 +40,23 @@ class ProfileForm extends React.Component {
       <form
         className='profile-form'
         onSubmit={this.handleSubmit}>
+
+        <input
+          type='text'
+          name='firstName'
+          placeholder='First Name'
+          value={this.state.firstName}
+          onChange={this.handleChange}
+        />
+
+        <input
+          type='text'
+          name='lastName'
+          placeholder='Last Name'
+          value={this.state.lastName}
+          onChange={this.handleChange}
+        />
+
 
         <textarea
           name='bio'

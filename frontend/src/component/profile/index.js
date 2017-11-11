@@ -12,10 +12,12 @@ class Profile extends React.Component {
     }
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    console.log('--->> MY STATE', this.state)
   }
-  
+
   componentDidMount() {
     this.props.fetchClientProfile()
+      .catch(console.error)
   }
 
   handleCreate(profile) {
@@ -34,7 +36,10 @@ class Profile extends React.Component {
     let { profile, profileCreate } = this.props
     // TODO: write the return 
 
+    console.log('--->> PROFILE:', profile)
     return (
+
+
       <div id='profile'>
         {console.log('--->>>THIS PROPS', this.props)}
         <h2> profile {console.log('---> ConsoleLog', profile)} </h2>
@@ -51,8 +56,8 @@ class Profile extends React.Component {
               </div>
               : // OR
               <div>
-                <p>hello World</p>
 
+                <p>{this.props.profile.firstName}</p>
                 <p> {profile.bio} </p>
                 <button onClick={() => this.setState({ editing: true })}>
                   Edit Bio
