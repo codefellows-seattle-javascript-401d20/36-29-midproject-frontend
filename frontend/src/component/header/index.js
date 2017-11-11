@@ -10,7 +10,7 @@ class Header extends React.Component {
       <header>
         <h1>Charity Choice</h1>
 
-        {console.log('--> LOGGED IN', this.props.loggedIn)}
+        // {console.log('--> LOGGED IN', this.props.loggedIn)}
         <nav>
           {util.renderIf(!this.props.loggedIn,
             <ul>

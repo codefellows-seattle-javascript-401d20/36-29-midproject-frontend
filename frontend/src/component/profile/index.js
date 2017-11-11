@@ -12,7 +12,7 @@ class Profile extends React.Component {
     }
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
-    console.log('--->> MY STATE', this.state)
+    // console.log('--->> MY STATE', this.state)
   }
 
   componentDidMount() {
@@ -36,7 +36,7 @@ class Profile extends React.Component {
     let { profile, profileCreate } = this.props
     // TODO: write the return 
 
-    console.log('--->> PROFILE:', profile)
+    // console.log('--->> PROFILE:', profile)
     return (
       <div id='profile'>
 
@@ -47,7 +47,7 @@ class Profile extends React.Component {
             <h3> {profile.email} </h3>
             {this.state.editing ?
               <div>
-                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
+                <ProfileForm hello={'world'} profile={profile} onComplete={this.handleUpdate} />
                 <button onClick={() => this.setState({ editing: false })}>
                   Cancel
                 </button>
@@ -55,21 +55,17 @@ class Profile extends React.Component {
               : // OR
               <div>
                 <p>Welcome, {profile.firstName}!</p>
-                <p>to edit your profile click the edit button</p>
-
                 <p> {profile.photo}</p>
                 <p> First name: {profile.firstName}</p>
                 <p> Last Name {profile.lastName}</p>
-                <p> City:  {profile.city}</p>
-                <p> State: {profile.state}</p>
-                <p> Donation goal: {profile.donationGoal}</p>
-                <p> Money spent {profile.moneySpent}</p>
-                <p> Bio: {profile.bio}</p>
-
+                {profile.city ? <p> City:  {profile.city}</p> : undefined}
+                {profile.state ? <p> State: {profile.state}</p> : undefined}
+                {profile.donationGoal ? <p> Donation goal: {profile.donationGoal}</p> : undefined}
+                {profile.moneySpent ? <p> Money spent {profile.moneySpent}</p> : undefined}
+                {profile.bio ? <p> Bio: {profile.bio}</p> : undefined}
                 <button onClick={() => this.setState({ editing: true })}>
                   Edit Bio
                 </button>
-
               </div>
             }
           </div>

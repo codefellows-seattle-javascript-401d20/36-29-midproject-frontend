@@ -9,7 +9,6 @@ export const tokenRemove = () =>
   ({ type: 'TOKEN_REMOVE' })
 
 export const logout = () => {
-  console.log('----> LOGGING OUT')
   cookieDelete('X-CharityChoice-Token')
   return tokenRemove()
 }
