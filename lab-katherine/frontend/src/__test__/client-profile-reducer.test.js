@@ -3,7 +3,7 @@ import reducer from '../reducer/client-profile.js';
 describe('clientProfile reducer', () => {
   test('the intial state shuld be null', () => {
     let state = reducer(undefined, {type: ''});
-    expect(null).toEqual(null);
+    expect(state).toEqual(null);
   });
 
   test('should set the profile', () => {
