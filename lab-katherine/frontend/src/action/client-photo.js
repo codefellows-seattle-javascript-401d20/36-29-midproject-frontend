@@ -5,7 +5,6 @@ export const set = (photo) => ({
   payload: photo,
 });
 
-
 export const uploadPhoto = (photo) => (store) => {
   let {token} = store.getState();
   return superagent.put(`${__API_URL__}/profiles/avatar`)
