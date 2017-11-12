@@ -9,6 +9,7 @@ import Profile from '../profile';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
 import * as clientProfile from '../../action/client-profile.js';
+import Search from '../search';
 
 class App extends React.Component {
   componentDidMount(){
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route exact path='/login' component={Landing} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/profile' component={Profile} />
+            <Route exact path='/search' component={Search} />
           </div>
         </BrowserRouter>
       </div>

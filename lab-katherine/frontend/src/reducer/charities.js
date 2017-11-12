@@ -1,24 +1,16 @@
-export const validatePhoto = (photo) => {
-  if(!photo)
-    throw new Error('a photo was required');
-  let {_id, url, description, owner, profile} = photo;
-  if(!_id || !url || !description || !owner || !profile)
-    throw new Error('photo was not valid');
+export const validateCharity = (charity) => {
+  if(!charity)
+    throw new Error('a charity was required');
+  let {name, streetAdd, city, mission, cause, rating, websiteURL, photoURL, keywords, category, phoneNumber, email} = charity;
+  if(!name || !streetAdd || !city || !mission || !cause || !rating || !websiteURL || !photoURL || !keywords || !category || !phoneNumber || !email)
+    throw new Error('charity was not valid');
 };
 
 export default (state=[], {type, payload}) => {
   switch(type){
-  case 'CLIENT_PHOTOS_SET':
-    if(!Array.isArray(payload))
-      throw new Error('clientPhotos mush be an array');
-    payload.forEach(validatePhoto);
+  case 'CHARITIES_SET':
+    // validateCharity(payload);
     return payload;
-  case 'CLIENT_PHOTO_CREATE':
-    validatePhoto(payload);
-    return [payload, ...state];
-  case 'CLIENT_PHOTO_REMOVE':
-    validatePhoto(payload);
-    return state.filter(item => item._id !== payload._id);
   case 'TOKEN_REMOVE':
     return [];
   default:
