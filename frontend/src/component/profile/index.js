@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as util from '../../lib/util.js'
-import ProfileForm from '..//profile-form'
+import ProfileForm from '../profile-form'
 import * as clientProfile from '../../action/client-profile.js'
 
 class Profile extends React.Component {
