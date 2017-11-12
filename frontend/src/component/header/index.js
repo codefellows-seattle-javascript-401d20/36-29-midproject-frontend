@@ -22,7 +22,7 @@ class Header extends React.Component {
           {util.renderIf(this.props.loggedIn,
             <ul>
               <li> <Link to='/dashboard'>dashboard</Link> </li>
-              <li> <Link to='/search'>search</Link> </li>
+              <li> <Link to='/charities'>charities</Link> </li>
               {/* <li> <Link to='/upload'>upload</Link> </li> */}
               <li> <Link to='/profile'>profile</Link> </li>
             </ul>

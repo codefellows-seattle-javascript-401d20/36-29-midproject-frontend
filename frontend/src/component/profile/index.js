@@ -40,14 +40,14 @@ class Profile extends React.Component {
     return (
       <div id='profile'>
 
-        <h2> profile {console.log('---> ConsoleLog', profile)} </h2>
+        <h2> profile </h2>
         {profile ?
           <div>
             <h2> {profile.username} </h2>
             <h3> {profile.email} </h3>
             {this.state.editing ?
               <div>
-                <ProfileForm hello={'world'} profile={profile} onComplete={this.handleUpdate} />
+                <ProfileForm profile={profile} onComplete={this.handleUpdate} />
                 <button onClick={() => this.setState({ editing: false })}>
                   Cancel
                 </button>
