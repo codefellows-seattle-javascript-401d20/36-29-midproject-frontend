@@ -1,3 +1,4 @@
+import './_charity.scss';
 import React from 'react';
 import * as util from '../../lib/util.js';
 
@@ -8,7 +9,7 @@ class Charity extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className='charity'>
         <h2> Charities </h2>
           <div>
             <img style={{width: '200px'}} src={charity.photoURL} />

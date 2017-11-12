@@ -1,3 +1,4 @@
+import './_dashboard.scss';
 import React from 'react';
 import SmartForm from '../smart-form';
 
