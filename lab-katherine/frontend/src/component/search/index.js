@@ -10,7 +10,7 @@ class Search extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className='search'>
         <h2>Search</h2>
         {charities.map((charity, i) =>
         <Charity

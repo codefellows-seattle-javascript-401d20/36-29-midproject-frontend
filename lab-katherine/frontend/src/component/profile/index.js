@@ -1,3 +1,4 @@
+import './_profile.scss';
 import React from 'react';
 import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
@@ -41,7 +42,7 @@ class Profile extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className='profile'>
         <h2> Profile </h2>
         { profile ?
           <div>
