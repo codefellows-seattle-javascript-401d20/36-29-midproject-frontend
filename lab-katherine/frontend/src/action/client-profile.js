@@ -36,3 +36,13 @@ export const fetch = (user) => (store) => {
     return store.dispatch(set(res.body));
   });
 };
+
+export const uploadPhoto = (user) => (store) => {
+  let {token} = store.getState();
+  return superagent.put(`${__API_URL__}/profiles/avatar`)
+  .set('Authorization', `Bearer ${token}`)
+  .attach('photo', user.photo)
+  .then(res => {
+    return store.dispatch(set(res.body));
+  });
+};
