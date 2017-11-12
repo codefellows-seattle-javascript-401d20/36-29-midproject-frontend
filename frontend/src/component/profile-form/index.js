@@ -4,6 +4,9 @@ let emptyState = {
   bio: '',
   firstName: '',
   lastName: '',
+  donationGoal: '',
+  city: '',
+  state: '',
   bioDirty: false,
   bioError: 'Bio required',
 }

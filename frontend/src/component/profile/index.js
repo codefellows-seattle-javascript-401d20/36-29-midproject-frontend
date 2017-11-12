@@ -58,11 +58,11 @@ class Profile extends React.Component {
                 <p> {profile.photo}</p>
                 <p> First name: {profile.firstName}</p>
                 <p> Last Name {profile.lastName}</p>
-                {profile.city ? <p> City:  {profile.city}</p> : undefined}
-                {profile.state ? <p> State: {profile.state}</p> : undefined}
-                {profile.donationGoal ? <p> Donation goal: {profile.donationGoal}</p> : undefined}
-                {profile.moneySpent ? <p> Money spent {profile.moneySpent}</p> : undefined}
-                {profile.bio ? <p> Bio: {profile.bio}</p> : undefined}
+                {profile.city ? <p> City:  {profile.city}</p> : ''}
+                {profile.state ? <p> State: {profile.state}</p> : ''}
+                {profile.donationGoal ? <p> Donation goal: {profile.donationGoal}</p> : ''}
+                {profile.moneySpent ? <p> Money spent {profile.moneySpent}</p> : ''}
+                {profile.bio ? <p> Bio: {profile.bio}</p> : ''}
                 <button onClick={() => this.setState({ editing: true })}>
                   Edit Bio
                 </button>
