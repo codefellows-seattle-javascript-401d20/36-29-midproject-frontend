@@ -4,7 +4,6 @@ import ProfileForm from '../profile-form';
 import * as util from '../../lib/util.js';
 import * as clientProfile from '../../action/client-profile.js';
 import PhotoForm from '../photo-form';
-import * as clientPhoto from '../../action/client-photo.js';
 
 class Profile extends React.Component {
   constructor(props){
@@ -84,7 +83,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   profileCreate: (profile) => dispatch(clientProfile.create(profile)),
   profileUpdate: (profile) => dispatch(clientProfile.update(profile)),
-  profileUploadPhoto: (photo) => dispatch(clientPhoto.uploadPhoto(photo)),
+  profileUploadPhoto: (photo) => dispatch(clientProfile.uploadPhoto(photo)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
