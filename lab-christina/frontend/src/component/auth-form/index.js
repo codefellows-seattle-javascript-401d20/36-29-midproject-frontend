@@ -106,7 +106,7 @@ class AuthForm extends React.Component {
     return (
       <form
         className='auth-form'
-        novalidate
+        noValidate
         onSubmit={ this.handleSubmit } >
 
         {util.renderIf(this.state.usernameDirty,

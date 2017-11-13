@@ -1,9 +1,21 @@
 import React from 'react'
 
 let emptyState = {
+  firstName: '',
+  firstNameDirty: true,
+  firstNameError: 'First name required!',
+  lastName: '',
+  lastNameDirty: true,
+  lastNameError: 'Last name required!',
+  city: '',
+  cityDirty: true,
+  cityError: '',
+  state: '',
+  stateDirty: true,
+  stateError: '',
   bio: '',
-  bioDirty: false,
-  bioError: 'Bio is required',
+  bioDirty: true,
+  bioError: '',
 }
 
 class ProfileForm extends React.Component {
@@ -12,7 +24,6 @@ class ProfileForm extends React.Component {
     this.state = props.profile ? {...emptyState, ...props.profile} : emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    // this.validateChange = this.validateChange.bind(this)
   }
 
   componentWillReceiveProps(props) {
@@ -20,13 +31,14 @@ class ProfileForm extends React.Component {
       this.setState(props.profile)
   }
 
-  handleChange(event) {
-    let { value } = event.target
+  handleChange(event){
+    let  { name, value, type } = event.target
+    value = type === 'number' ? Number(value) : value
     this.setState({
-      bio: value,
-      bioDirty: true,
-      bioError: value ? null : emptyState.bioError,
-    })
+      [name]: value,
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: value ? null : emptyState[`${ name }Error`],
+    });
   }
 
   handleSubmit(event) {
@@ -38,17 +50,52 @@ class ProfileForm extends React.Component {
   render() {
     return (
       <form
-        className='profile-form'
-        onSubmit={ this.handleSubmit }>
+             className='profile-form'
+             onSubmit={ this.handleSubmit }>
 
-        <textarea
-          name='bio'
-          value={ this.state.bio }
-          onChange={ this.handleChange }
-        />
+             <textarea
+               type='text'
+               name='firstName'
+               placeholder='First Name'
+               value={ this.state.firstName }
+               onChange={ this.handleChange }
+               />
 
-        <button type='submit'> create </button>
-      </form>
+             <textarea
+               type='text'
+               name='lastName'
+               placeholder='LastName'
+               value={ this.state.lastName }
+               onChange={ this.handleChange }
+               />
+
+               <textarea
+                 type='text'
+                 name='city'
+                 placeholder='City'
+                 value={ this.state.city }
+                 onChange={ this.handleChange }
+                 />
+
+               <textarea
+                 type='text'
+                 name='state'
+                 placeholder='State'
+                 value={ this.state.state }
+                 onChange={ this.handleChange }
+                 />
+
+               <textarea
+                 type='text'
+                 name='bio'
+                 placeholder='Personal bio'
+                 value={ this.state.bio }
+                 onChange={ this.handleChange }
+                 />
+
+             <button type='submit'> { this.props.profile ? 'update' : 'create' } profile </button>
+           </form>
+
     )
   }
 }

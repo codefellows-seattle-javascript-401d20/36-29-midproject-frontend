@@ -5,13 +5,13 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Landing from '../landing'
 import Profile from '../profile'
 import Header from '../header'
+import Footer from '../footer'
 import Dashboard from '../dashboard'
 import AuthRedirect from '../auth-redirect'
 import * as clientProfile from '../../action/client-profile.js'
 
 class App extends React.Component {
   componentWillMount(){
-    //fetch user data is logged in
     if(this.props.loggedIn) {
     this.props.fetchClientProfile()
     .catch(console.error)
@@ -21,6 +21,7 @@ class App extends React.Component {
     return(
       <div className='app'>
         <BrowserRouter>
+        <div>
           <div>
             <Header />
             <Route path='*' component={ AuthRedirect } />
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route exact path='/profile' component={ Profile } />
             <Route exact path='/dashboard' component={ Dashboard } />
           </div>
+        </div>
         </BrowserRouter>
       </div>
     )

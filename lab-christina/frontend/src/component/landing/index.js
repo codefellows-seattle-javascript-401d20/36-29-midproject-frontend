@@ -24,7 +24,7 @@ class Landing extends React.Component {
   handleSignup(user){
     this.props.signup(user)
     .then(() => {
-      this.props.history.push('/dashboard')
+      this.props.history.push('/profile')
     })
     .catch(console.error)
   }
@@ -38,11 +38,11 @@ class Landing extends React.Component {
       <div className='landingPara'>
 
         <h3> Our Mission </h3>
-          <p className='landingParaOne'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+          <p className='landingParaOne'><strong>:: HOVER ME :: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
         <h3> Community </h3>
-          <p className='landingParaTwo'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+          <p className='landingParaTwo'><strong>:: HOVER ME :: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
         <h3> Contributions </h3>
-          <p className='landingParaThree'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
+          <p className='landingParaThree'><strong>:: HOVER ME :: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ligula et nisi varius, at euismod augue efficitur. Nunc malesuada justo a luctus porta. Praesent varius tincidunt est quis tincidunt. Praesent malesuada nunc at libero pellentesque bibendum. Donec suscipit turpis quis suscipit semper. Etiam fermentum ipsum ut nunc consequat, a tincidunt elit lacinia. Integer porta facilisis urna a interdum. Cras pulvinar elit sed bibendum iaculis. Nam lacinia dapibus leo quis dictum. Nullam semper magna at massa tincidunt tincidunt.</p>
 
       </div>
     )}
