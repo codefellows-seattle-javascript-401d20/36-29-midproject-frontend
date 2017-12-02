@@ -14,12 +14,12 @@ export default (state = [], { type, payload }) => {
       payload.forEach(validatePhoto)
       return payload
     case 'CLIENT_PHOTO_CREATE':
-      return [payload, ...state]
+      return payload
     case 'CLIENT_PHOTO_REMOVE':
       validatePhoto(payload)
       return state.filter(item => item._id !== payload._id)
     case 'TOKEN_REMOVE':
-      return []
+      return null
     default:
       return state
   }
