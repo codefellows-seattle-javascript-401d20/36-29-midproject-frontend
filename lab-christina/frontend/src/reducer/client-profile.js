@@ -1,6 +1,6 @@
 export const validateProfile = (profile) => {
-  if(!Profile)
-    throw new Error('Profile Required!')
+  if(!profile)
+    throw new Error('profile required!')
   let { firstName, lastName, city, state, bio } = profile
   if(!firstName || !lastName)
     throw new Error('__VALIDATION_ERROR__ invalid profile');
