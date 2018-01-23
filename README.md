@@ -12,17 +12,17 @@
 ## Configuration  
 #### backend/
 * Copy your mid-project into this directory
-  * Remove the .git folder from the backend project directory before commiting
+  * Remove the .git folder from the backend project directory before committing
   
 #### frontend/
 * **README.md** -- with a documention about your lab
 * **.babelrc** -- with all dependencies and dev-dependencies 
-* **.eslintrc** -- with the class .eslintrc file
+* **.eslintrc.json** -- with the class .eslintrc.json file
 * **.gitignore** -- with a robust gitignore
 * **.eslintignore** -- with the class .eslintignore
 * **package.json** -- with all dependencies and dev-dependencies 
 * **webpack.config.js** -- with webpack config
-* **src/** -- containing the front end code
+* **src/** -- containing the frontend code
 * **src/main.js** -- renders the app
 * **src/style** -- containing your sass
  
@@ -30,8 +30,8 @@
 * Create a frontend for your midproject backend
 * Use react/redux best practices
 * Add reporter and thunk middleware to your redux store
-* make async action creators for making ajax request to your backend
-* make sync action creators from updating your app store
+* make async action creators for making ajax requests to your backend
+* make sync action creators for updating your app store
 
 #### Components
 ```
@@ -44,7 +44,7 @@ Provider
       // display main app
 ```
 
-* Implament a Landing route that allows a user to signup and login to the applicaition.
+* Implement a Landing route that allows a user to signup and login to the application.
 * Manage the frontend routes based on the clients authorization
   * If the user is not logged in they should be forced to remain on the landing route(s)
   * If the user is logged in they should not permitted to remain on the landing route(s)
