@@ -1,0 +1,11 @@
+@import '_vars';
+
+@media screen and (min-width: 960px) {
+  .app {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+li {
+  list-style: none;
+}

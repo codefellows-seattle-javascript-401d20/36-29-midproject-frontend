@@ -1,0 +1,38 @@
+@import 'vars';
+
+.mainHead {
+  color: $accent-color-green;
+}
+
+.mainHead {
+  display: block;
+  font-size: 40px;
+  text-align: left;
+  color: $background-color;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+nav {
+  width: 100%;
+  padding: 0.1em;
+  background-color: $accent-color-green;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+nav li {
+  text-align: center;
+  padding: .5em .2em;
+  width: 100px;
+  margin: 20px;
+  display: inline-block;
+}
+
+li a {
+  color: $background-color;
+}
